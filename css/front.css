@@ -198,9 +198,7 @@ a {
 */
 footer {
   background-color: #f6f6f6;
-  padding: 60px 0 0;
-  color: #858585;
-  border-top: 7px solid #575757; }
+  color: #858585;}
   footer a {
     color: #858585; }
   footer .footer-content {
@@ -230,11 +228,15 @@ footer {
   footer .copyright-wrapper {
     background-color: #000;
     font-size: 14px;
-    padding: 5px 0; }
+    padding: 35px 0; }
+  .contact-footer{
+      margin-top: 15px;
+      color: #fff;
+  }
     footer .copyright-wrapper .copyright {
       margin-top: 8px; }
       footer .copyright-wrapper .copyright .company {
-        color: #54273b; }
+        color: #9e7f05; }
       footer .copyright-wrapper .copyright .psmedia {
         color: #86390d; }
     footer .copyright-wrapper #social_block {
@@ -242,7 +244,7 @@ footer {
       overflow: hidden;
       float: right;
       font-size: 20px;
-      margin-bottom: 0; }
+      margin-bottom: 10px; }
 
 @media (min-width: 992px) {
   .copyright {

@@ -68,41 +68,29 @@
             
         </section>
         <footer>
-            <div class="container">
-                <div class="row footer-content">
-                    <div class="col-md-6 footer-col col-xs-6 footer-menu">
-                        <div class="footer-menu-part">
-                            <span class="footer-top-span">
-                                Site map
-                            </span>
-                            <div>
-                                <img class="hidden-ms hidden-xs logo-footer" src="<?=frontPath?>logo2.jpg" alt="" style=""/>
-                                <?=foot_menu($db,$view)?>
-                                
-                            </div>     
-                        </div>
-                    </div>
-                    <div class="col-md-6 footer-col">
-                        <div class="footer-contact-part">
-                            <span class="footer-top-span">
-                                Contact us
-                            </span>    
-                            <div>
-                                <?=common::qtext($db,4)?>
-                            </div> 
-                        </div>
-                    </div>
-                </div>  
-            </div> 
             <div class="copyright-wrapper">
                 <div class="container">             
                     <div class="row bottom-footer">                
-                        <div >
-                            <div class="col-md-6 copyright">
-                                Copyright © 2017 <b class="company">JJ Ketsa Property Agents</b>. All rights reserved.
-                            </div>
+                        
+                        <div class="col-md-2 logo">
+                            <a href="<?=myWeb?>" title="logo"><img src="<?=frontPath?>logo.jpg" alt="" style=""/></a>
+                        </div>
+                        <div class="col-md-3 contact-footer">
+                            <?=common::qtext($db,4)?>
+                        </div>
+                        <div class="col-md-6 copyright pull-right">
+                            <div class="row">    
+                            <div class="col-md-12">
 
-                            <?=social($db)?>
+                                <?=social($db)?>
+                                </div>
+                            <div class="col-md-12 text-right">
+                                    © 2009 <b class="company">Wesbournehomes</b>. All rights reserved.
+                                </div>
+                            <div class="col-md-12 text-right">
+                                Designed by<a href="psmedia.vn">  <b class="company">Psmedia.vn</b></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
