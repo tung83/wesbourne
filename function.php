@@ -10,7 +10,7 @@ function pageId($view){
     }
     return '';
 }
-function menu($db,$view){
+function menu($db,$lang,$view){
    
     $db->reset();
     $list=$db->where('active',1)->orderBy('ind','ASC')->orderBy('id')->get('menu');
@@ -51,14 +51,18 @@ function menu($db,$view){
                             <!--Main Menu HTML Code-->
                             <nav class="wsmenu clearfix">
                                 <ul class="mobile-sub wsmenu-list">';
+    
                             foreach($list as $item){
                                 $active=($view==$item['view'])?'active':'';
                     if(($view == 'trang-chu' && $item['view'] =='home') || ($view == 'search' && $item['view'] =='build') ||($view == 'search_sell' && $item['view'] =='sell'))
                         {
                                 $active='active';
                         }
-                                $title=$item['title'];
-                                $lnk=myWeb.$item['view'];  
+                        
+        $title=$lang=='vi'?$item['title']:($lang=='cn'?$item['cn_title']:$item['e_title']);
+        $db_view=$lang=='vi'?$item['view']:($lang=='cn'?$item['cn_view']:$item['e_view']);
+                                
+                                $lnk=myWeb.$lang.'/'.$db_view;  
                                 $str.='
                                     <li><a href="'.$lnk.'"  class="'.$active.'">'.$title.'</a></li>';
                             }
@@ -155,7 +159,7 @@ function foot_sell_cate($db,$view){
     return $sell->sell_cate_list();    
 }
 
-function home($db){    
+function home($db,$lang){    
     $str='
     <section id="ind-slider">
         <div id="slider-box">
@@ -163,7 +167,7 @@ function home($db){
         </div>
     </section>';  
     common::page('product');
-    $product=new product($db);
+    $product=new product($db,$lang);
     $str.=$product->ind_product($db);
     $str.=ind_buy_sell($db);
     

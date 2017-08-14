@@ -1,15 +1,30 @@
 <?php
 class base{
     protected $db,$view,$title,$db_name,$db_cate_name,$paging_shown;
-    protected function __construct($db,$id,$db_name,$table='menu'){
+    protected function __construct($db,$id,$db_name,$lang='vi',$table='menu'){
         $this->db_name = $db_name;
         $this->db_cate_name = $db_name.'_cate';
         $this->db=$db;
         $this->db->reset();
+        $this->lang=$lang;
         $db->where('id',$id);
         $item=$db->getOne($table);
         $this->view=$item['view'];
         $this->title=$item['title'];
+        switch($this->lang){
+            case 'vi':
+                $this->view=$item['view'];
+                $this->title=$item['title'];
+                break;
+            case 'cn':
+                $this->view=$item['cn_view'];
+                $this->title=$item['cn_title'];
+                break;
+            default:
+                $this->view=$item['e_view'];
+                $this->title=$item['e_title'];
+                break;
+        }
     }
     
     function breadcrumb(){

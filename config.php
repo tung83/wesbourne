@@ -60,7 +60,7 @@ $db->connect();
 //include area end
 
 //set default variable
-$lang=isset($_GET['lang'])?$_GET['lang']:'vi';
-$view=isset($_GET['view'])?$_GET['view']:'trang-chu';
+$lang=isset($_GET['lang'])?$_GET['lang']:'en';
+$view=isset($_GET['view'])?$_GET['view']:'home';
 //set default variable end
 ?>

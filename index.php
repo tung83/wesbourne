@@ -23,7 +23,7 @@
     <div class="wsmenucontainer clearfix">
         <div class="overlapblackbg"></div>
         <header>
-            <?=menu($db,$view)?>         
+            <?=menu($db,$lang,$view)?>         
         </header>  
         <div class="wrapper">
         <section id="page-content">
@@ -31,36 +31,36 @@
 
         switch($view){
             case 'build':
-                echo product($db);
+                echo product($db,$lang);
                 break;
             case 'search':
             case 'tim-kiem':
-                echo search_product($db);
+                echo search_product($db,$lang);
                 break;
             case 'search_sell':
             case 'tim-kiem':
-                echo search_sell($db);
+                echo search_sell($db,$lang);
                 break;
             case 'buy':
-                echo buy($db);
+                echo buy($db,$lang);
                 break;
             case 'sell':
-                echo sell($db, $view);
+                echo sell($db,$lang, $view);
                 break;        
             case 'concierge':
-                echo concierge($db);
+                echo concierge($db,$lang);
                 break;
             case 'meet-our-partners':
-                echo partner($db);
+                echo partner($db,$lang);
                 break;
             case 'about-us':
-                echo about($db);
+                echo about($db,$lang);
                 break;
             case 'contact-us':
-                echo contact($db);
+                echo contact($db,$lang);
                 break;
             default:
-                echo home($db);
+                echo home($db,$lang);
                 break;
         }
         ?>

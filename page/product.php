@@ -1,8 +1,8 @@
 <?php
 //http://bootsnipp.com/snippets/z4Wor
 class product extends base{
-    function __construct($db){        
-        parent::__construct($db,2,'product');
+    function __construct($db,$lang){        
+        parent::__construct($db,2,'product',$lang);
     }
     function ind_product($db){ 
         $str.='
@@ -24,7 +24,7 @@ class product extends base{
         $this->db_orderBy();
         $list=$this->db->get('product',3);   
         foreach($list as $item){
-            $lnk=myWeb.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
+            $lnk=myWeb.$this->lang.'/'.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
             $img=$this->first_image($item['id']);
             $str.='
             <div class="col-md-4 col-sm-6 product-col wow bounceIn animated" data-wow-duration="2s">
