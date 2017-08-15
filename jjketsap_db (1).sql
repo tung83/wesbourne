@@ -365,6 +365,10 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `e_meta_keyword` text NOT NULL,
   `e_meta_description` text NOT NULL,
   `e_view` varchar(255) NOT NULL,
+  `cn_title` text NOT NULL,
+  `cn_meta_keyword` text NOT NULL,
+  `cn_meta_description` text NOT NULL,
+  `cn_view` varchar(255) NOT NULL,
   `ind` int(11) NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
@@ -374,15 +378,15 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Dumping data for table `menu`
 --
 
-INSERT INTO `menu` (`id`, `title`, `icon`, `meta_keyword`, `meta_description`, `view`, `e_title`, `e_meta_keyword`, `e_meta_description`, `e_view`, `ind`, `active`) VALUES
-(1, 'HOME', '', '', '', 'home', 'Home', '', '', 'home', 1, 1),
-(2, 'BUILD', '', '', '', 'build', 'BUILD', '', '', 'build', 2, 1),
-(3, 'BUY', '', '', '', 'buy', 'buy', '', '', 'product', 3, 0),
-(4, 'SELL', '', 'sell', '', 'sell', '', '', '', '', 4, 1),
-(5, 'CONCIERGE', '', 'concierge', '', 'concierge', '', '', '', '', 5, 1),
-(6, 'ABOUT US', 'about-us', '', '', 'about-us', 'About Us', '', '', 'about-us', 6, 1),
-(7, 'MEET OUR PARTNERS', '', '', '', 'meet-our-partners', 'News', '', '', 'news', 7, 0),
-(8, 'CONTACT US', '', '', '', 'contact-us', 'Contact Us', '', '', 'contact-us', 8, 1);
+INSERT INTO `menu` (`id`, `title`, `icon`, `meta_keyword`, `meta_description`, `view`, `e_title`, `e_meta_keyword`, `e_meta_description`, `e_view`, `cn_title`, `cn_meta_keyword`, `cn_meta_description`, `cn_view`, `ind`, `active`) VALUES
+(1, 'Trang chủ', '', '', '', 'trang-chu', 'Home', '', '', 'home', 'Home', '', '', 'home', 1, 1),
+(2, 'Giới thiệu', '', '', '', 'gioi-thieu', 'ABOUT', '', '', 'about', 'ABOUT', '', '', 'about', 2, 1),
+(3, 'CUSTOM', '', '', '', 'custom', 'CUSTOM', '', '', 'custom', 'CUSTOM', '', '', 'custom', 3, 1),
+(4, 'KNOCKDOWN REBUILD', '', '', '', 'knockdown-rebuild', 'KNOCKDOWN REBUILD', '', '', 'knockdown-rebuild', 'KNOCKDOWN REBUILD', '', '', 'knockdown-rebuild', 4, 1),
+(5, 'DUAL OCCUPANCY', '', '', '', 'dual-occupancy', 'DUAL OCCUPANCY', '', '', 'dual-occupancy', 'DUAL OCCUPANCY', '', '', 'dual-occupancy', 5, 1),
+(6, 'SLOPING BLOCKS', '', '', '', 'sloping-blocks', 'SLOPING BLOCKS', '', '', 'sloping-blocks', 'SLOPING BLOCKS', '', '', 'sloping-blocks', 6, 1),
+(7, 'DEVELOPMENT', '', '', '', 'development', 'DEVELOPMENT', '', '', 'development', 'DEVELOPMENT', '', '', 'development', 7, 1),
+(8, 'CONTACT', '', '', '', 'contact', 'CONTACT', '', '', 'contact', 'CONTACT', '', '', 'contact', 8, 1);
 
 -- --------------------------------------------------------
 
