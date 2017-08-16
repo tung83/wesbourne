@@ -15,7 +15,7 @@ class product extends base{
                     <span>'.$this->title.'
                     </span>
                     <p class="sub-sum"><span>'
-                        .common::qtext($db,11).
+                        .common::qtext($db,$lang,11).
                     '</span></p>
                 </div>
             </div>
@@ -175,7 +175,7 @@ class product extends base{
                     <span>'.$this->title.'
                     </span>
                     <p class="sub-sum"><span>'
-                        .common::qtext($db,6).
+                        .common::qtext($db,$lang,6).
                     '</span></p>
                 </div>';
         $page=isset($_GET['page'])?intval($_GET['page']):1;

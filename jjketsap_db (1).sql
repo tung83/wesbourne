@@ -26,18 +26,61 @@ SET time_zone = "+00:00";
 -- Table structure for table `about`
 --
 
+--
+-- Table structure for table `menu`
+--
+
+CREATE TABLE IF NOT EXISTS `menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `icon` varchar(255) NOT NULL,
+  `meta_keyword` text NOT NULL,
+  `meta_description` text NOT NULL,
+  `view` varchar(200) NOT NULL,
+  `e_title` text NOT NULL,
+  `e_meta_keyword` text NOT NULL,
+  `e_meta_description` text NOT NULL,
+  `e_view` varchar(255) NOT NULL,
+  `cn_title` text NOT NULL,
+  `cn_meta_keyword` text NOT NULL,
+  `cn_meta_description` text NOT NULL,
+  `cn_view` varchar(255) NOT NULL,
+  `ind` int(11) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id`, `title`, `icon`, `meta_keyword`, `meta_description`, `view`, `e_title`, `e_meta_keyword`, `e_meta_description`, `e_view`, `cn_title`, `cn_meta_keyword`, `cn_meta_description`, `cn_view`, `ind`, `active`) VALUES
+(1, 'Trang chủ', '', '', '', 'trang-chu', 'Home', '', '', 'home', 'Home', '', '', 'home', 1, 1),
+(2, 'Giới thiệu', '', '', '', 'gioi-thieu', 'ABOUT', '', '', 'about', 'ABOUT', '', '', 'about', 2, 1),
+(3, 'CUSTOM', '', '', '', 'custom', 'CUSTOM', '', '', 'custom', 'CUSTOM', '', '', 'custom', 3, 1),
+(4, 'KNOCKDOWN REBUILD', '', '', '', 'knockdown-rebuild', 'KNOCKDOWN REBUILD', '', '', 'knockdown-rebuild', 'KNOCKDOWN REBUILD', '', '', 'knockdown-rebuild', 4, 1),
+(5, 'DUAL OCCUPANCY', '', '', '', 'dual-occupancy', 'DUAL OCCUPANCY', '', '', 'dual-occupancy', 'DUAL OCCUPANCY', '', '', 'dual-occupancy', 5, 1),
+(6, 'SLOPING BLOCKS', '', '', '', 'sloping-blocks', 'SLOPING BLOCKS', '', '', 'sloping-blocks', 'SLOPING BLOCKS', '', '', 'sloping-blocks', 6, 1),
+(7, 'DEVELOPMENT', '', '', '', 'development', 'DEVELOPMENT', '', '', 'development', 'DEVELOPMENT', '', '', 'development', 7, 1),
+(8, 'CONTACT', '', '', '', 'contact', 'CONTACT', '', '', 'contact', 'CONTACT', '', '', 'contact', 8, 1);
+
 CREATE TABLE IF NOT EXISTS `about` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
-  `sum` text NOT NULL,
+  `sum` longtext NOT NULL,
   `content` longtext NOT NULL,
   `meta_keyword` text NOT NULL,
   `meta_description` text NOT NULL,
-  `e_title` text NOT NULL,
-  `e_sum` text NOT NULL,
+  `e_title` text NULL,
+  `e_sum` longtext NOT NULL,
   `e_content` longtext NOT NULL,
   `e_meta_keyword` text NOT NULL,
   `e_meta_description` text NOT NULL,
+  `cn_title` text NULL,
+  `cn_sum` longtext NOT NULL,
+  `cn_content` longtext NOT NULL,
+  `cn_meta_keyword` text NOT NULL,
+  `cn_meta_description` text NOT NULL,
   `pId` int(11) NOT NULL,
   `img` text NOT NULL,
   `active` tinyint(1) NOT NULL,
@@ -45,16 +88,55 @@ CREATE TABLE IF NOT EXISTS `about` (
   `ind` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pId` (`pId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `about`
 --
 
-INSERT INTO `about` (`id`, `title`, `sum`, `content`, `meta_keyword`, `meta_description`, `e_title`, `e_sum`, `e_content`, `e_meta_keyword`, `e_meta_description`, `pId`, `img`, `active`, `home`, `ind`) VALUES
-(1, 'Our Values ', '', '<div style="text-align: justify;"><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:14px"><span style="line-height:2"><span style="background-color:transparent; color:windowtext"><span style="background-color:inherit">When it comes to our &quot;Values&quot; - it should represent the principles and standards of our Company.&nbsp; Our customers should be confident that we will represent them with the highest level of professionalism, trust and integrity.&nbsp; It is imperative that these values emanate from the top and flow through to every team member.&nbsp; Our values extends to all our Partners, so they are aligned in the partnership services we are providing to our customers.</span></span></span></span></span></div>\r\n', 'JJ Ketsa Property Agents', 'When it comes to our &quot;Values&quot; - it should represent the principles and standards of our Company.  Our customers should be confident that we will represent them with the highest level of professionalism, trust and integrity.  It is imperative that these values emanate from the top and flow through to every team member.  Our values extends to all our Partners, so they are aligned in the partnership services we are providing to our customers.', 'Ngại nổ gas, vợ sếp chuộng bếp điện từ hồng ngoại', 'Tiết kiệm điện, không tốn chi phí gas, an toàn trong sử dụng lại nấu thức ăn ngon... bếp điện tử hồng ngoại hiện được nhiều bà nội trợ chuộng dù giá bán khá cao: ít nhất trên 20 triệu đồng một chiếc.', '<p>Tiết kiệm điện, không tốn chi phí gas, an toàn trong sử dụng lại nấu thức ăn ngon... bếp điện tử hồng ngoại hiện được nhiều bà nội trợ chuộng dù giá bán khá cao: ít nhất trên 20 triệu đồng một chiếc.</p>\r\n\r\n<p>Chồng làm giám đốc một công ty lớn trong ngành truyền thông, gia đình có đến 2 người giúp việc, chị Thu ở Núi Trúc, Hà Nội, vẫn giữ thói quen tự nấu nướng cho cả gia đình. Chồng cùng 2 cậu con trai của chị cũng chỉ thích ăn những món do nội tướng chế biến.</p>\r\n\r\n<p>&quot;Nhiều món ăn tuy đơn giản nhưng vẫn cần bí quyết chế biến riêng nên người khác nấu không hợp khẩu vị khiến chồng con tôi không ưng. Hai cô giúp việc chỉ phải dọn dẹp với giặt giũ, còn đi chợ hay nấu nướng thì tôi tự thu xếp công việc và thời gian để làm&quot;, chị Thu nói.</p>\r\n\r\n<p>Không ít lần chị Thu &quot;mất điểm&quot; vì công việc quá lu bu. Chị kể, đặt nồi cá kho lên bếp định một tiếng rưỡi tiếng xuống tắt lửa là vừa, nhưng mải quyết toán doanh thu cuối tháng của công ty nên chị quên mất. Ngửi thấy mùi khét, chị chạy xuống bếp thì nồi cá đã sắp thành than.</p>\r\n\r\n<p>Chia sẻ với bạn, chị Thu được mách về loại bếp điện từ hồng ngoại - kết hợp tính năng điện từ với hồng ngoại, có hẹn giờ nên tránh được tối đa những sơ suất tương tự &quot;vụ nồi cá&quot;. Ngoài ra, dùng loại bếp này, thời gian nấu nhanh, nấu được với tất cả các loại nồi chứ không bị bó hẹp như bếp từ. Cân nhắc mãi, chị Thu quyết định mua một chiếc dù mức giá khá cao, 45 triệu đồng cho loại 4 bếp.</p>\r\n\r\n<p>&quot;Chi phí ban đầu hơi cao nhưng tiết kiệm được thời gian nấu, tính ra chưa đầy 30 phút là xong bữa tối. Con cái còn nhỏ, ở nhà cả ngày với người giúp việc, mà gần đây xảy ra nhiều vụ nổ gas nên tôi càng lo, quyết tâm đầu tư bếp từ hồng ngoại để đảm bảo an toàn cho cả nhà&quot;, chị Thu tâm sự. Ngoài ra, mặt bếp sáng bóng, hợp với không gian căn bếp sang trọng mà vợ chồng chị đã cất công thiết kế, khiến chị Thu không tiếc khoản tiền gần 50 triệu đồng đã bỏ ra để mua.</p>\r\n\r\n<p>Chị Tiến ở Mỹ Đình, Hà Nội, phu nhân giám đốc chi nhánh của công ty dược có tiếng, cũng chọn bếp điện từ hồng ngoại cho gian bếp nhà mình. Chị lý giải, ngoài lý do an toàn, hình thức bắt mắt và nấu nướng nhanh, bếp có giá trị sử dụng cao, giảm được chi phí hằng tháng so với dùng các loại bếp thông thường.</p>\r\n\r\n<p>Theo chị, nếu dùng bếp gas, trung bình mỗi tháng gia đình chị hết khoảng 250.000 đồng. Từ khi chuyển sang dùng bếp từ hồng ngoại, cắt giảm được chi phí gas, chị tính toán thấy số tiền điện chỉ tăng thêm từ 120.000 đồng đến 150.000 đồng so với trước. Định kỳ hằng năm, chị không phải thay van gas, dây nối..., tuổi thọ của loại bếp này cũng gấp 2-3 lần so với bếp gas. Chưa kể, do có nhiều chức năng tự động như tự ngắt khi gặp vật thể lạ hoặc người dùng quên tắt... nên thiết bị nhà bếp này khá an toàn.</p>\r\n\r\n<p>&quot;Tôi thấy giá khá cao nhưng &#39;đắt xắt ra miếng&#39;, đầu tư lớn ban đầu mà chi phí dùng về sau rẻ hơn khá nhiều nên tính về lâu dài thì tiết kiệm hơn. Một điểm nữa tôi rất thích là trời nóng vẫn có thể bật quạt hướng thẳng vào vị trí đứng nấu mà không sợ bị tản nhiệt như nấu bằng bếp gas&quot;, chị Tiến giải thích.</p>\r\n\r\n<p>Xuất hiện chưa lâu và có mức giá khá cao song bếp điện từ hồng ngoại đã được khá nhiều bà nội trợ đầu tư chọn lựa. Giá bếp dao động từ 20 đến trên 40 triệu đồng mỗi chiếc, tùy vào xuất xứ, vật liệu và số lượng mặt bếp. Ông Phạm Đức Tuân, Giám đốc kinh doanh ngành hàng bếp của Kangaroo, một những doanh nghiệp vừa tung ra dòng sản phẩm bếp điện từ hồng ngoại cao cấp cho biết, chỉ trong vòng 2 tháng, số lượng bán ra đã hơn 5.000 chiếc, trong đó, doanh số tháng sau cao hơn tháng trước 30%.</p>\r\n\r\n<p>Trao đổi với&nbsp;<em>VnExpress.net</em>, ông cho biết, so với bếp gas, bếp điện từ hồng ngoại Kangaroo có hiệu suất hấp thụ nhiệt cao đến 90%, trong khi bếp gas đạt 55%, bếp điện thông thường đạt khoảng 65%. Theo đó, nếu chuyển từ bếp gas sang bếp điện từ hồng ngoại, người tiêu dùng tiết kiệm được đến 40% chi phí nhiên liệu cho việc đun nấu, thời gian nấu nướng cũng vì thế mà nhanh gấp 2-3 lần.</p>\r\n\r\n<p>Hai bộ phận quan trọng nhất của bếp là mặt kính và bộ gia nhiệt đều được nhập khẩu từ các hãng danh tiếng của Đức là Schott và Ego, đảm bảo độ bền và hiệu suất ra nhiệt tối đa. Ngoài ra với độ dày 4 mm, bếp có khả năng chịu lực và chịu nhiệt lên đến 800 độ C. Nhiệt độ được truyền thẳng đứng đến đáy nồi, nhiệt năng không bị thất thoát ra không khí.</p>\r\n\r\n<p>Tuy nhiên, vị chuyên gia khẳng định, dù sử dụng bất kỳ loại bếp nào, người nội trợ cũng nên vệ sinh, bảo trì thiết bị thường xuyên, giữ không khí trong phòng bếp lưu thông, thoáng mát... để đảm bảo chất lượng sản phẩm.</p>\r\n', '', '', 0, '1492651860riviera.jpg', 1, 0, 3),
-(2, 'Our VISION &amp; MISSION ', '', '<span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif"><span style="line-height:2"><strong>Our VISION</strong> is to make the property building, buying and selling process an enjoyable experience.&nbsp; Building new, buying established and selling property is one of the most major transactions we experience in life, so we want to help as many people BUILD, BUY or SELL their property by connecting them with the most experienced Industry Leaders. Our VISION is to be highest recommended Agency in the Industry.&nbsp; The biggest compliment to a Business is a recommendation and referral.<br />\r\n<strong>Our MISSION</strong> is to partner with the most experienced Industry Leaders to assist our customers&nbsp; BUILD, BUY or SELL their property in the most simple and enjoyable way.&nbsp; Our goal is to offer the highest level of customer service so that the growth of our Business will be from recommendations and referrals. </span></span></span>', 'JJ Ketsa Property Agents', 'Our VISION is to make the property building, buying and selling process an enjoyable experience. Our MISSION is to partner with the most experienced Industry Leaders to assist our customers  BUILD, BUY or Sell their property in the most simple and enjoyable way', 'Sự lên ngôi của bếp từ trong căn bếp Việt', 'Không chỉ tuyệt vời về hiệu quả sử dụng, bếp từ còn rất được...', '<p><strong>Vì&nbsp;sao bếp gas bị thất thế?</strong></p>\r\n\r\n<p>Còn nhớ vụ nổ gas cách đây không lâu tại phố Tạ Quang Bửu khiến hai cháu bé bị tử vong rất thương tâm, bố và mẹ bị thương nặng. Chính vì lẽ đó mà không ít người e dè khi lựa chọn bếp gas để sử dụng.</p>\r\n\r\n<p>Anh Hoàng Vũ Linh (Đống Đa &ndash; Hà Nội) cho hay: &ldquo;Vụ nổ khí gas vừa rồi thật kinh khủng quá. Gia đình tôi cũng sử dụng gas để nấu nướng nhưng không hay thường xuyên kiểm tra xem dây dẫn gas, van gas có an toàn không, đã bị hư hại gì chưa. Nhưng sau lần này thì tôi sẽ thường xuyên gọi thợ tới kiểm tra hơn để đảm bảo an toàn khi sử dụng&rdquo;.</p>\r\n\r\n<p><a href="http://bep.vn/upload/editor/images/bep-ga-bep-tu.jpg" style="box-sizing: border-box; color: rgb(53, 75, 156); text-decoration: none; transition: all 0.1s ease-in-out; outline: none; background-color: transparent;" title="Sự lên ngôi của bếp từ trong căn bếp Việt - ảnh 1"><img alt="Hình ảnh Sự lên ngôi của bếp từ trong căn bếp Việt số 1" src="http://bep.vn/upload/editor/images/bep-ga-bep-tu.jpg" style="border-style:initial; border-width:0px; box-sizing:border-box; max-width:100%; vertical-align:middle" title="Sự lên ngôi của bếp từ trong căn bếp Việt - ảnh 1" /></a></p>\r\n\r\n<p><em>Nhiều người tiêu dùng e ngại tính an toàn của bếp gas</em></p>\r\n\r\n<p>Chính vì những &ldquo;ẩn họa&rdquo; khôn lường của bếp gas mà không ít gia đình đã loại nó ra khỏi danh mục những đồ dùng trong nhà bếp. Chị Trần Hoàng Ngân (Từ Liêm &ndash; Hà Nội) chia sẻ: &ldquo;Sau một vài vụ cháy nổ do gas gây ra, gia đình tôi đã quyết định không sử dụng loại bếp này nữa, chuyển sang sử dụng loại bếp khác an toàn hơn để tránh những rủi ro đáng tiếc có thể xảy ra&rdquo;.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Và sự lên ngôi của bếp từ</strong></p>\r\n\r\n<p>Chẳng có gì lạ khi người tiêu dùng quay lưng lại với bếp gas và &ldquo;sính&rdquo; sử dụng&nbsp;<a href="http://bep.vn/bep-tu" rel="dofollow" style="box-sizing: border-box; color: rgb(53, 75, 156); text-decoration: none; transition: all 0.1s ease-in-out; outline: none; background-color: transparent;" target="_blank"><strong>bếp từ</strong></a>&nbsp;bởi sự an toàn, tiết kiệm và đẹp sang trọng của nó.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Với cơ chế làm trực tiếp phần thức ăn bên trong nồi nên hiệu suất sử dụng của bếp từ rất cao lên tới 90%, cao hơn rất nhiều so với bếp gas và bếp điện. Chính vì vậy mà thời gian nấu ăn của bạn sẽ được rút ngắn hơn và chi phí phải bỏ ra cho công việc nấu nướng cũng tiết kiệm hơn. &nbsp;</p>\r\n\r\n<p><a href="http://bep.vn/upload/editor/images/bep-ga-bep-tu-1.jpg" style="box-sizing: border-box; color: rgb(53, 75, 156); text-decoration: none; transition: all 0.1s ease-in-out; outline: none; background-color: transparent;" title="Sự lên ngôi của bếp từ trong căn bếp Việt - ảnh 2"><img alt="Hình ảnh Sự lên ngôi của bếp từ trong căn bếp Việt số 2" src="http://bep.vn/upload/editor/images/bep-ga-bep-tu-1.jpg" style="border-style:initial; border-width:0px; box-sizing:border-box; max-width:100%; vertical-align:middle" title="Sự lên ngôi của bếp từ trong căn bếp Việt - ảnh 2" /></a></p>\r\n\r\n<p><em>Sự lên ngôi của bếp từ</em></p>\r\n\r\n<p>Không chỉ tuyệt vời về hiệu quả sử dụng, bếp từ còn rất được lòng các bà nội trợ bởi thiết kế đẹp mắt, sang trọng và hiện đại của nó. Hơn nữa, bếp từ rất dễ sử dụng (thông qua các nút điều khiển), tính năng đa dạng lại an toàn với cả trẻ em và người lớn nếu vô tình chạm phải mặt bếp trong khi đang nấu, nó không gây bỏng rát bởi mặt bếp luôn mát trong suốt quá trình sử dụng.</p>\r\n\r\n<p>Hiện nay có rất nhiều chủng loại&nbsp;<a href="http://bep.vn/bep-dien-tu" rel="dofollow" style="box-sizing: border-box; color: rgb(53, 75, 156); text-decoration: none; transition: all 0.1s ease-in-out; outline: none; background-color: transparent;" target="_blank">bếp điện</a>,&nbsp;bếp từ của rất nhiều hang khác nhau, người tiêu dùng nên lựa chọn những loại bếp của các thương hiệu uy tín để đảm bảo an toàn và chất lượng khi sử dụng.&nbsp;</p>\r\n\r\n<p>Nếu bạn còn đang băn khoăn không biết nên lựa chọn loại bếp nào cho phù hợp với &ldquo;túi tiền&rdquo; và không gian bếp nhà mình, còn chần chừ gì nữa mà không đến với&nbsp;<strong>Bep.vn&nbsp;</strong>tại&nbsp;địa chỉ 406 Xã Đàn, Đống Đa, Hà Nội. Tại đây, bạn sẽ nhận được những lời tư vấn xác đáng từ những tư vấn viên chuyên nghiệp của chúng tôi, chắc chắn bạn sẽ dễ dàng chọn được cho gia đình một sản phẩm bếp từ ưng ý.</p>\r\n\r\n<p>Tại&nbsp;<strong>Bep.vn</strong>, chúng tôi&nbsp;cung cấp các sản phẩm bếp từ, bếp điện từ, bếp điện,&nbsp;<a href="http://bep.vn/lo-nuong" rel="dofollow" style="box-sizing: border-box; color: rgb(53, 75, 156); text-decoration: none; transition: all 0.1s ease-in-out; outline: none; background-color: transparent;" target="_blank">lò nướng</a>, lò vi sóng, máy hút mùi, máy rửa bát và các sản phẩm gia dụng khác chính hãng với chất lượng tốt nhất trên thị trường hiện nay.</p>\r\n\r\n<p><strong>Thông tin liên hệ:</strong></p>\r\n\r\n<p>Công ty TNHH Xây Dựng và Dịch Vụ Anh Tú<br />\r\nSố 406 Phố Xã Đàn - Đống Đa - Hà Nội &nbsp;(Đường Kim Liên Mới)<br />\r\nTel : 04 35738480&nbsp;<br />\r\nEmail :&nbsp;info@bep.vn<br />\r\nWebsite:&nbsp;<a href="http://bep.vn/" rel="dofollow" style="box-sizing: border-box; color: rgb(53, 75, 156); text-decoration: none; transition: all 0.1s ease-in-out; outline: none; background-color: transparent;" target="_blank">http://bep.vn</a></p>\r\n', '', '', 0, '1492651825duke.jpg', 1, 0, 2),
-(3, 'Who are JJ Ketsa Property Agents?    ', '', '<div style="text-align: justify;"><span style="line-height:2"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">The buying or selling process can take up a lot of time and can become quite daunting.&nbsp; Consider us to be your friend in the business. We will ensure that you receive the highest level of customer service to achieve the best possible outcome.<br />\r\nLet us be the &quot;go to&quot; agents when you have any property needs.&nbsp; When it comes to building your home or investment, choose from our extensive house designs on offer.&nbsp; When it comes to buying your home, let us find the properties and negotiate them on your behalf.&nbsp; When it comes to selling, let us achieve the highest possible price through our successful sales strategies. You, our customers are our highest priority.&nbsp; When you choose us, we become you.&nbsp;&nbsp;&nbsp;<br />\r\n<strong>What&#39;s in a name?</strong><br />\r\nOur name &quot;JJ Ketsa&quot; represents the reason, the drive and the &quot;WHY&quot; of our Company.&nbsp; It is a reminder of what is important - FAMILY.&nbsp; The foundation of our values.&nbsp; So for our Company to thrive and grow, we need to stay in touch with what is really important.</span></span></span></div>\r\n', 'JJ Ketsa Property Agents', 'The buying or selling process can take up a lot of time and can become quite daunting.  Consider us to be your friend in the business. We will ensure that you receive the highest level of customer service to achieve the best possible outcome.', '', '', '', '', '', 0, '1492651804cambridge.jpg', 1, 0, 1);
+INSERT INTO `about` (`id`, `title`, `sum`, `content`, `meta_keyword`, `meta_description`, 
+`e_sum`, `e_content`, `e_meta_keyword`, `e_meta_description`,
+ `cn_sum`, `cn_content`, `cn_meta_keyword`, `cn_meta_description`, 
+`pId`, `img`, `active`, `home`, `ind`) VALUES
+(1, 'About', 'vn sum', '<p>Chất lượng sản phẩm.</p>\r\n', 'keywork', 'description',
+ 'en sum', '<p>enChất lượng sản phẩm.</p>\r\n', 'keywork', 'description',
+ 'cn sum', '<p>cnChất lượng sản phẩm.</p>\r\n', 'keywork', 'description', 0, '', 1, 0, 1);
+
+
+
+--
+-- Table structure for table `custom`
+--
+
+CREATE TABLE IF NOT EXISTS `custom` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `e_title` text NOT NULL,
+  `cn_title` text NOT NULL,
+  `sum` text NOT NULL,
+  `e_sum` text NOT NULL,
+  `cn_sum` text NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `lnk` text NOT NULL,
+  `e_lnk` text NOT NULL,
+  `ind` int(11) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `custom`
+--
+
+INSERT INTO `custom` (`id`, `title`, `e_title`,`cn_title`, `sum`, `e_sum`, `cn_sum`, `img`, `lnk`, `e_lnk`, `ind`, `active`) VALUES
+(7, '', '', '', '', '', '', '1492592095banner2.jpg', '', '', 7, 1),
+(9, '', '', '', '', '', '', '1492592379banner3.jpg', '', '', 6, 1),
+(10, '', '', '', '', '', '', '1492832489banner3.jpg', '', '', 4, 1),
+(11, '', '', '', '', '', '', '1492832519banner4.jpg', '', '', 5, 1),
+(13, '', '', '', '', '', '', '1499392017banner11.jpg', '', '', 1, 1),
+(14, '', '', '', '', '', '', '1499392047banner21.jpg', '', '', 2, 1),
+(15, '', '', '', '', '', '', '1499392074banner31.jpg', '', '', 3, 1);
+
 
 -- --------------------------------------------------------
 
@@ -350,44 +432,6 @@ INSERT INTO `contact` (`id`, `name`, `adds`, `phone`, `email`, `subject`, `purpo
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `menu`
---
-
-CREATE TABLE IF NOT EXISTS `menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` text NOT NULL,
-  `icon` varchar(255) NOT NULL,
-  `meta_keyword` text NOT NULL,
-  `meta_description` text NOT NULL,
-  `view` varchar(200) NOT NULL,
-  `e_title` text NOT NULL,
-  `e_meta_keyword` text NOT NULL,
-  `e_meta_description` text NOT NULL,
-  `e_view` varchar(255) NOT NULL,
-  `cn_title` text NOT NULL,
-  `cn_meta_keyword` text NOT NULL,
-  `cn_meta_description` text NOT NULL,
-  `cn_view` varchar(255) NOT NULL,
-  `ind` int(11) NOT NULL,
-  `active` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `menu`
---
-
-INSERT INTO `menu` (`id`, `title`, `icon`, `meta_keyword`, `meta_description`, `view`, `e_title`, `e_meta_keyword`, `e_meta_description`, `e_view`, `cn_title`, `cn_meta_keyword`, `cn_meta_description`, `cn_view`, `ind`, `active`) VALUES
-(1, 'Trang chủ', '', '', '', 'trang-chu', 'Home', '', '', 'home', 'Home', '', '', 'home', 1, 1),
-(2, 'Giới thiệu', '', '', '', 'gioi-thieu', 'ABOUT', '', '', 'about', 'ABOUT', '', '', 'about', 2, 1),
-(3, 'CUSTOM', '', '', '', 'custom', 'CUSTOM', '', '', 'custom', 'CUSTOM', '', '', 'custom', 3, 1),
-(4, 'KNOCKDOWN REBUILD', '', '', '', 'knockdown-rebuild', 'KNOCKDOWN REBUILD', '', '', 'knockdown-rebuild', 'KNOCKDOWN REBUILD', '', '', 'knockdown-rebuild', 4, 1),
-(5, 'DUAL OCCUPANCY', '', '', '', 'dual-occupancy', 'DUAL OCCUPANCY', '', '', 'dual-occupancy', 'DUAL OCCUPANCY', '', '', 'dual-occupancy', 5, 1),
-(6, 'SLOPING BLOCKS', '', '', '', 'sloping-blocks', 'SLOPING BLOCKS', '', '', 'sloping-blocks', 'SLOPING BLOCKS', '', '', 'sloping-blocks', 6, 1),
-(7, 'DEVELOPMENT', '', '', '', 'development', 'DEVELOPMENT', '', '', 'development', 'DEVELOPMENT', '', '', 'development', 7, 1),
-(8, 'CONTACT', '', '', '', 'contact', 'CONTACT', '', '', 'contact', 'CONTACT', '', '', 'contact', 8, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -651,6 +695,7 @@ CREATE TABLE IF NOT EXISTS `qtext` (
   `e_title` text NOT NULL,
   `content` longtext NOT NULL,
   `e_content` longtext NOT NULL,
+  `cn_content` longtext NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
@@ -670,17 +715,17 @@ INSERT INTO `qtext` (`id`, `title`, `e_title`, `content`, `e_content`) VALUES
 (10, 'buy sum', '', '<div style="text-align: center; margin-left: 40px;"><strong><span style="font-size:14px">What Is A Buyer Advocate?</span></strong><br />\r\nA Buyer Advocate is a fully licensed real estate agent who sources properties according to a brief. </div>\r\n\r\n<div style="text-align: center; margin-left: 40px;">A good Buyers Advocate will find you the best property, in the best position that your budget allows.</div>\r\n', ''),
 (11, 'home_build', '', '<span style="line-height:2"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif"><strong>Why BUILD with us?</strong><br />\r\nWith the experience, innovation and quality delivered by our Licenced Builders, you can build with peace of mind. Choose from our extensive designs and floorplans. If you can&#39;t find what you like, we can custom your design.</span></span></span>', ''),
 (12, 'home_buy', '', '<span style="line-height:2"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif"><strong>Let us help you buy.</strong><br />\r\nDo you need guidance when it comes to buying a home or investment property?&nbsp; Price guides, suburb guides, finance and legal, we can help you through the maze of information overload. </span></span></span>', ''),
-(13, 'home_concierge', '', '<span style="line-height:2"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Our property services extends a little further. Use our Concierge Services for Custom Design, Development,<br />\r\nKnockdown- Rebuild, Property Finance or Builder Liaising.</span></span></span>', ''),
-(14, 'home_sell', '', '<span style="line-height:2"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif"><strong>Why SELL with us?</strong><br />\r\nOur Vendors enjoy a highly skilled and boutique service from an experienced team who understand what it takes to deliver them the Premium Price. Ask us how we do this and why our progressive business structure allows them to save $1000&#39;s...</span></span></span>', ''),
+(13, 'home_custom', '', '<span style="line-height:2"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Our property services extends a little further. Use our Concierge Services for Custom Design, Development,<br />\r\nKnockdown- Rebuild, Property Finance or Builder Liaising.</span></span></span>', ''),
+(14, 'home_combine', '', '<span style="line-height:2"><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif"><strong>Why SELL with us?</strong><br />\r\nOur Vendors enjoy a highly skilled and boutique service from an experienced team who understand what it takes to deliver them the Premium Price. Ask us how we do this and why our progressive business structure allows them to save $1000&#39;s...</span></span></span>', ''),
 (15, 'home_about', '', '<p><span style="font-size:14px"><span style="line-height:2"><span style="font-family:arial,helvetica,sans-serif"><span style="background-color:transparent; color:windowtext"><span style="background-color:inherit">You can say we are not your typical agents.&nbsp; We wanted to offer a service that help customers Build, Buy or Sell their home.&nbsp; By partnering with some of the best Industry Leaders to assist customers through the emotional rollercoaster of information overload.&nbsp; We work to make the process simple and enjoyable.&nbsp;</span></span>&nbsp;</span></span></span></p>\r\n\r\n<div class="embed-responsive embed-responsive-16by9"><iframe allowfullscreen="" frameborder="0" height="422" src="http://www.youtube.com/embed/qlStrPEz-SQ?controls=0" width="750"></iframe></div>\r\n', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sell`
+-- Table structure for table `rebuild`
 --
 
-CREATE TABLE IF NOT EXISTS `sell` (
+CREATE TABLE IF NOT EXISTS `rebuild` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
   `feature` longtext NOT NULL,
@@ -709,6 +754,14 @@ CREATE TABLE IF NOT EXISTS `sell` (
   `e_teach` longtext NOT NULL,
   `e_meta_keyword` text NOT NULL,
   `e_meta_description` text NOT NULL,
+  `cn_promotion` longtext NOT NULL,
+  `cn_title` text NULL,
+  `cn_feature` longtext NULL,
+  `cn_detail` longtext  NULL,
+  `cn_content` longtext  NULL,
+  `cn_teach` longtext  NULL,
+  `cn_meta_keyword` text  NULL,
+  `cn_meta_description` text  NULL,
   `pd_option` varchar(255) NOT NULL,
   `lnk` text NOT NULL,
   `e_lnk` text NOT NULL,
@@ -723,10 +776,10 @@ CREATE TABLE IF NOT EXISTS `sell` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
 
 --
--- Dumping data for table `sell`
+-- Dumping data for table `rebuild`
 --
 
-INSERT INTO `sell` (`id`, `title`, `feature`, `price`, `storey`, `beds`, `landWidth`, `price_reduce`, `in_stock`, `condition`, `brand_id`, `detail`, `content`, `teach`, `video`, `meta_keyword`, `meta_description`, `manual`, `e_manual`, `promotion`, `e_promotion`, `e_title`, `e_feature`, `e_detail`, `e_content`, `e_teach`, `e_meta_keyword`, `e_meta_description`, `pd_option`, `lnk`, `e_lnk`, `pId`, `active`, `home`, `ind`, `file`, `file_show`) VALUES
+INSERT INTO `rebuild` (`id`, `title`, `feature`, `price`, `storey`, `beds`, `landWidth`, `price_reduce`, `in_stock`, `condition`, `brand_id`, `detail`, `content`, `teach`, `video`, `meta_keyword`, `meta_description`, `manual`, `e_manual`, `promotion`, `e_promotion`, `e_title`, `e_feature`, `e_detail`, `e_content`, `e_teach`, `e_meta_keyword`, `e_meta_description`, `pd_option`, `lnk`, `e_lnk`, `pId`, `active`, `home`, `ind`, `file`, `file_show`) VALUES
 (3, 'Lot 320 Stableford Street, Werribee - Riviera Flinders 19', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>4&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>12.5&nbsp;&nbsp;&nbsp;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, 'Single', 4, 12, NULL, 0, 0, 0, '', '<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1ZF9MYnRFQkZOU3c" target="_blank"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Flinders%2019.jpg" style="float:left; height:1062px; width:600px" />', '', '', 'Lot 320 Stableford Street, Werribee - Riviera Flinders 19', 'Lot 320 Stableford Street, Werribee - Riviera Flinders 19', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 33, NULL, 0),
 (7, 'Lot 403 Distinction Crescent, Truganina - Prominent Oxford 27', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>4&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>12.5&nbsp;&nbsp;&nbsp;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, '', 0, 0, NULL, 0, 0, 0, '', '<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1M2tsSE5KSFVxd0E" target="_blank"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Oxford%2027.png" style="float:left; height:424px; margin:5px; width:300px" /><img alt="" src="/file/ckfinder/userfiles/images/Oxford%2027%20(1).png" style="float:left; height:413px; margin:5px; width:300px" />', '', '', 'Lot 403 Distinction Crescent, Truganina - Prominent Oxford 27', 'Lot 403 Distinction Crescent, Truganina - Prominent Oxford 27', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 23, NULL, 0),
 (8, 'Lot 418 Award Crescent, Truganina - Elementary Moiki 18', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>4&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>8.5&nbsp;&nbsp;&nbsp;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, '', 0, 0, NULL, 0, 0, 0, '', '<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1TlRlMzNvZ0k3U28" target="_blank"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Moiki%2018(1).png" style="float:left; height:576px; margin:5px; width:300px" /><img alt="" src="/file/ckfinder/userfiles/images/Moiki%2018%20(1).png" style="float:left; height:591px; margin:5px; width:300px" />', '', '', 'Lot 418 Award Crescent, Truganina - Elementary Moiki 18', 'Lot 418 Award Crescent, Truganina - Elementary Moiki 18', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 18, NULL, 0),
@@ -763,56 +816,16 @@ INSERT INTO `sell` (`id`, `title`, `feature`, `price`, `storey`, `beds`, `landWi
 (42, 'Lot 1731 Rush Street, Rockbank Woodlea - President Huson 28', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>4&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>14</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, 'Single', 4, 0, NULL, 0, 0, 0, '', '<br />\r\n<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1SXY5Rm1iSGFNSGs"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Hudson-28-1731.jpg" style="float:left; height:1104px; margin:10px; width:600px" />', '', '', 'Lot 1731 Rush Street, Rockbank Woodlea - President Huson 28', 'Lot 1731 Rush Street, Rockbank Woodlea - President Huson 28', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 8, NULL, 0),
 (43, 'Lot 2618 Rapa Drive, Tarneit - President Huson 28', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>4&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>14</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, 'Single', 3, 14, NULL, 0, 0, 0, '', '<br />\r\n<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1U2w2MFUycmpscVE"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Hudson-28-2618.jpg" style="float:left; height:1104px; margin:10px; width:600px" />', '', '', 'Lot 2618 Rapa Drive, Tarneit - President Huson 28', 'Lot 2618 Rapa Drive, Tarneit - President Huson 28', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 3, NULL, 0),
 (44, 'Lot 2618 Rapa Drive, Tarneit - Malibu Atlanta 290', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>4&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>14</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, 'Single', 4, 14, NULL, 0, 0, 0, '', '<br />\r\n<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1R2dPSjVpU245Z2s"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Atlanta-290-RHS-2618.jpg" style="float:left; height:1103px; margin:10px; width:600px" />', '', '', 'Lot 2618 Rapa Drive, Tarneit - Malibu Atlanta 290', 'Lot 2618 Rapa Drive, Tarneit - Malibu Atlanta 290', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 6, NULL, 0);
-INSERT INTO `sell` (`id`, `title`, `feature`, `price`, `storey`, `beds`, `landWidth`, `price_reduce`, `in_stock`, `condition`, `brand_id`, `detail`, `content`, `teach`, `video`, `meta_keyword`, `meta_description`, `manual`, `e_manual`, `promotion`, `e_promotion`, `e_title`, `e_feature`, `e_detail`, `e_content`, `e_teach`, `e_meta_keyword`, `e_meta_description`, `pd_option`, `lnk`, `e_lnk`, `pId`, `active`, `home`, `ind`, `file`, `file_show`) VALUES
+INSERT INTO `rebuild` (`id`, `title`, `feature`, `price`, `storey`, `beds`, `landWidth`, `price_reduce`, `in_stock`, `condition`, `brand_id`, `detail`, `content`, `teach`, `video`, `meta_keyword`, `meta_description`, `manual`, `e_manual`, `promotion`, `e_promotion`, `e_title`, `e_feature`, `e_detail`, `e_content`, `e_teach`, `e_meta_keyword`, `e_meta_description`, `pd_option`, `lnk`, `e_lnk`, `pId`, `active`, `home`, `ind`, `file`, `file_show`) VALUES
 (45, 'Lot 2618 Rapa Drive, Tarneit - Baron Heathcote 39', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>4&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>14</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, 'Single', 4, 14, NULL, 0, 0, 0, '', '<br />\r\n<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1QWpMa2xsdUlRU28"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Heathcote%2039-2618-1.png" style="float:left; height:496px; margin:5px; width:300px" /><img alt="" src="/file/ckfinder/userfiles/images/Heathcote%2039-2618-2.png" style="float:left; height:473px; margin:5px; width:300px" />', '', '', 'Lot 2618 Rapa Drive, Tarneit - Baron Heathcote 39', 'Lot 2618 Rapa Drive, Tarneit - Baron Heathcote 39', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 8, 'documents/1501495457Revision 1.pdf', 1),
 (46, 'HOUSE &amp; LAND OF THE WEEK - Lot 2137 Fields Street, Rockbank - Riviera Livingston 19', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>3&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>10.5&nbsp;&nbsp;&nbsp;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, 'Single', 2, 10.5, NULL, 0, 0, 0, '', '<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1QjdGU1ZKdEVTbGs" target="_blank"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Livingston%2019-2137.jpg" style="float:left; height:1252px; margin:5px; width:600px" />', '', '', 'Lot 2137 Fields Street, Rockbank - Riviera Livingston 19', 'Lot 2137 Fields Street, Rockbank - Riviera Livingston 19', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 1, 'documents/1501636800ducbon.jpg', 1),
 (47, 'Lot 2137 Fields Street, Rockbank - Elementary Ikonic 19', '<table border="0" cellpadding="1" cellspacing="1" style="height:65px; width:336px">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bed.png" style="height:52px; width:52px" /></td>\r\n			<td>4&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/bath.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/car.png" style="height:50px; width:50px" /></td>\r\n			<td>2&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n			<td><img alt="" src="/file/ckfinder/userfiles/images/land.png" style="height:50px; width:50px" /></td>\r\n			<td>10.5&nbsp;&nbsp;&nbsp;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 0, 'Double', 4, 10.5, NULL, 0, 0, 0, '', '<em><a href="https://drive.google.com/open?id=0B1q9Zqrh0Rq1SHczQVFaZGJwUGc" target="_blank"><span style="color:#ff00cc">Download Details</span></a></em><br />\r\n<br />\r\n<img alt="" src="/file/ckfinder/userfiles/images/Ikonic%2019-21371.png" style="float:left; height:561px; margin:5px; width:300px" /><img alt="" src="/file/ckfinder/userfiles/images/Ikonic%2019-21373.jpg" style="float:left; height:561px; margin:5px; width:300px" />', '', '', 'Lot 2137 Fields Street, Rockbank - Elementary Ikonic 19', 'Lot 2137 Fields Street, Rockbank - Elementary Ikonic 19', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, 0, 4, 'documents/1501643553', 0);
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `sell_cate`
+-- Table structure for table `rebuild_image`
 --
 
-CREATE TABLE IF NOT EXISTS `sell_cate` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` text NOT NULL,
-  `sum` text NOT NULL,
-  `meta_keyword` text NOT NULL,
-  `meta_description` text NOT NULL,
-  `e_title` text NOT NULL,
-  `e_sum` text NOT NULL,
-  `e_meta_keyword` text NOT NULL,
-  `e_meta_description` text NOT NULL,
-  `img` text NOT NULL,
-  `icon` text NOT NULL,
-  `pId` int(11) NOT NULL,
-  `lev` int(11) NOT NULL,
-  `ind` int(11) NOT NULL,
-  `active` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
-
---
--- Dumping data for table `sell_cate`
---
-
-INSERT INTO `sell_cate` (`id`, `title`, `sum`, `meta_keyword`, `meta_description`, `e_title`, `e_sum`, `e_meta_keyword`, `e_meta_description`, `img`, `icon`, `pId`, `lev`, `ind`, `active`) VALUES
-(1, 'BIẾN TẦN', '', 'LED Par Lights', 'LED Par Lights', 'Electrical Parts', '', 'Electrical Parts', 'Electrical Parts', '', '', 0, 1, 1, 1),
-(2, 'SERVO', '', 'LED Moving Head', 'LED Moving Head', 'Auto Parts', '', 'Auto Parts', 'Auto Parts', '', '', 0, 1, 2, 1),
-(3, 'ĐỘNG CƠ ', '', 'Moving Head light', 'Moving Head light', 'Mechanical Heat Sink', '', 'Mechanical Heat Sink', 'Mechanical Heat Sink', '', '', 0, 1, 3, 1),
-(8, 'INVERTER OMRON', '', 'INVERTER OMRON', 'INVERTER OMRON', '', '', '', '', '', '', 0, 1, 8, 1),
-(15, 'DUCATI', '', 'DUCATI', 'DUCATI', '', '', '', '', '', '', 0, 1, 6, 1),
-(16, 'YASKAWA', '', 'YASKAWA', 'YASKAWA', '', '', '', '', '', '', 0, 1, 1, 1),
-(17, 'BỘ ĐIỀU KHIỂN', '', 'BỘ ĐIỀU KHIỂN', 'BỘ ĐIỀU KHIỂN', '', '', '', '', '', '', 0, 1, 13, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sell_image`
---
-
-CREATE TABLE IF NOT EXISTS `sell_image` (
+CREATE TABLE IF NOT EXISTS `rebuild_image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `img` text NOT NULL,
   `pId` int(11) NOT NULL,
@@ -823,10 +836,10 @@ CREATE TABLE IF NOT EXISTS `sell_image` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
 
 --
--- Dumping data for table `sell_image`
+-- Dumping data for table `rebuild_image`
 --
 
-INSERT INTO `sell_image` (`id`, `img`, `pId`, `ind`, `active`) VALUES
+INSERT INTO `rebuild_image` (`id`, `img`, `pId`, `ind`, `active`) VALUES
 (3, '1500448224riviera-sold.jpg', 3, 1, 1),
 (8, '1500449038prominent-sold.jpg', 7, 1, 1),
 (10, '1495167935elite.jpg', 9, 1, 1),
@@ -866,6 +879,12 @@ INSERT INTO `sell_image` (`id`, `img`, `pId`, `ind`, `active`) VALUES
 (48, '1500628511baron1132-new.jpg', 45, 1, 1),
 (49, '1501576192riviera.jpg', 46, 1, 1),
 (50, '1501642169Elementary1132.jpg', 47, 1, 1);
+
+--
+-- Constraints for table `rebuild_image`
+--
+ALTER TABLE `rebuild_image`
+  ADD CONSTRAINT `rebuild_image_ibfk_1` FOREIGN KEY (`pId`) REFERENCES `rebuild` (`id`) ON DELETE CASCADE;
 
 -- --------------------------------------------------------
 
@@ -1057,12 +1076,6 @@ ALTER TABLE `buy_image`
 --
 ALTER TABLE `product_image`
   ADD CONSTRAINT `product_image_ibfk_1` FOREIGN KEY (`pId`) REFERENCES `product` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `sell_image`
---
-ALTER TABLE `sell_image`
-  ADD CONSTRAINT `sell_image_ibfk_1` FOREIGN KEY (`pId`) REFERENCES `sell` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -76,7 +76,7 @@
                             <a href="<?=myWeb?>" title="logo"><img src="<?=frontPath?>logo.jpg" alt="" style=""/></a>
                         </div>
                         <div class="col-md-3 contact-footer">
-                            <?=common::qtext($db,4)?>
+                            <?=common::qtext($db,$lang,4)?>
                         </div>
                         <div class="col-md-6 copyright pull-right">
                             <div class="row">    

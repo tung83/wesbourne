@@ -24,7 +24,7 @@ function menu($db,$lang,$view){
         <div class="wsmobileheader clearfix">
             <a id="wsnavtoggle" class="animated-arrow"><span></span></a>
             <a href="'.myWeb.'" class="smallogo"><img src="'.frontPath.'logo.jpg" height="43" alt="" /></a>
-            <a class="callusicon" href="tel:'.common::qtext($db,5).'"><span class="fa fa-phone"></span></a>
+            <a class="callusicon" href="tel:'.common::qtext($db,$lang,5).'"><span class="fa fa-phone"></span></a>
         </div>  
         <div class="header-wrap">
             <div class="container">
@@ -38,7 +38,7 @@ function menu($db,$lang,$view){
                             <div class="hotline">
                             <div class="bg-image-blur"></div>
                                 <img src="'.frontPath.'phone.png" alt="" style=""/>
-                                <a href="tel:'.common::qtext($db,2).'">'.common::qtext($db,2).'</a>  '
+                                <a href="tel:'.common::qtext($db,$lang,2).'">'.common::qtext($db,$lang,2).'</a>  '
             . '             <a href="'.$flag_lnk.'" title="en"><img class="flag" src="/file/front/en.jpg" alt="" style=""></a>
                             <a href="'.$flag_lnk_vi.'" title="vi"><img class="flag" src="/file/front/vi.jpg" alt="" style=""></a>
                             <a href="'.$flag_lnk_cn.'" title="cn"><img class="flag" src="/file/front/cn.jpg" alt="" style=""></a>
@@ -166,38 +166,34 @@ function home($db,$lang){
             '.wow_slider($db).'
         </div>
     </section>';  
-    common::page('product');
-    $product=new product($db,$lang);
-    $str.=$product->ind_product($db);
-    $str.=ind_buy_sell($db);
     
-    common::page('concierge');
-    $concierge=new concierge($db);
-    $str.=$concierge->ind_concierge(common::qtext($db,13));
+    common::page('custom');
+    $custom=new custom($db,$lang);
+    $str.=$custom->ind_custom(common::qtext($db,$lang,13));
+    
+    $str.=ind_buy_sell($db, $lang);
     
     common::page('about');
-    $about=new about($db);
-    $str.=$about->ind_about(common::qtext($db,15));  
-    $str.='<div id="google-map"> </div>';
-    $str.=gmap();
+    $about=new about($db,$lang);
+    $str.=$about->ind_about(common::qtext($db,$lang,15));
+    
+    common::page('occupancy');
+    $occupancy=new occupancy($db,$lang);
+    $str.=$occupancy->occupancys();
     
     /*$str.=partner($db);*/
     return $str;
 }
-function ind_buy_sell($db){
-    common::page('buy');
-    $buy=new buy($db);
-    common::page('sell');
-    $sell=new sell($db);
-    return '<div class="row ind-sell-buy">
-            <div class="ind-buy col-md-6 col-middle2-container">
-                <div class="col-middle2">'.
-                   $buy->ind_buy(common::qtext($db,12)).                   
-                '</div>
+function ind_buy_sell($db,$lang){
+    return '<div class="ind-sell-buy">
+            <div class="ind-buy">
+                <div class="container">
+                <div class="row">  '.
+                   common::qtext($db,$lang,12).                   
+                '
             </div>
-            <div class="ind-sell col-md-6">'.
-                   $sell->ind_sell(common::qtext($db,14)).     
-            '</div>
+        </div>
+            </div>
         </div>';
 }
 function wow_slider($db){
@@ -304,7 +300,7 @@ function about($db){
     <section id="page">';
     common::page('about');
     $about=new about($db);
-    $str.=$about->top_content_sum(common::qtext($db,7));
+    $str.=$about->top_content_sum(common::qtext($db,$lang,7));
     $str.=$about->about_cate();
     $str.=$about->bottom_content(); 
     $str.='
@@ -332,22 +328,22 @@ function partner($db){
     </section>';
     return $str;    
 }
-function concierge($db){
-    common::page('concierge');
-    $concierge=new concierge($db);
-    $str.=$concierge->top_content_sum(common::qtext($db,9));
+function custom($db){
+    common::page('custom');
+    $custom=new custom($db);
+    $str.=$custom->top_content_sum(common::qtext($db,$lang,9));
     if(isset($_GET['id'])){
-        $str.=$concierge->concierge_one(intval($_GET['id']));    
+        $str.=$custom->custom_one(intval($_GET['id']));    
     }else{
-        $str.=$concierge->concierge_cate();
+        $str.=$custom->custom_cate();
     }     
-    $str.=$concierge->bottom_content(); 
+    $str.=$custom->bottom_content(); 
     return $str;
 }
 function buy($db){
     common::page('buy');
     $buy=new buy($db);
-    $str.=$buy->top_content_sum(common::qtext($db,10));
+    $str.=$buy->top_content_sum(common::qtext($db,$lang,10));
     if(isset($_GET['id'])){
         $str.=$buy->buy_one(intval($_GET['id']));    
     }else{
@@ -362,7 +358,7 @@ function sell($db){
     common::page('sell');
     $sell=new sell($db);
     $str.=search_form($db);
-    $str.=$sell->top_content_sum(common::qtext($db,8));
+    $str.=$sell->top_content_sum(common::qtext($db,$lang,8));
     if(isset($_GET['id'])){
         $str.=$sell->sell_one(intval($_GET['id']));    
     }else{
@@ -378,7 +374,7 @@ function product($db){
     common::page('product');
     $pd=new product($db);
     
-    $str.=$pd->top_content_sum(common::qtext($db,6));
+    $str.=$pd->top_content_sum(common::qtext($db,$lang,6));
     if(isset($_GET['id'])){
         $str.=$pd->product_one(intval($_GET['id']));    
     }

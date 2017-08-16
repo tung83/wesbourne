@@ -1,17 +1,17 @@
 <?php
-class concierge extends base{
-    function __construct($db){
-        parent::__construct($db,5,'concierge');
+class custom extends base{
+    function __construct($db,$lang){
+        parent::__construct($db,3,'custom',$lang);
     }
-    function ind_concierge($sum_text){
+    function ind_custom($sum_text){
         $str='
-        <div class="ind-concierge">  
+        <div class="ind-custom">  
             <div class="container">
                 <div class="row">   
                 <div>    
                     <div class="col-xs-12">
                         <div class="title-head">
-                            <span>'
+                            <span>' 
                                 .$this->title.' 
                             </span>
                         </div>
@@ -30,7 +30,7 @@ class concierge extends base{
             </div>';
         return $str;
     }
-    function concierge_item($item){
+    function custom_item($item){
          return '
             <div class="col-xs-12 wow fadeIn animated" data-wow-duration="1000ms">
                 <div>
@@ -39,15 +39,15 @@ class concierge extends base{
             </div>';
        
     }
-    function concierge_cate(){
+    function custom_cate(){
         $page=isset($_GET['page'])?intval($_GET['page']):1;
         $this->db->reset();
         $this->db->where('active',1);
         $this->db_orderBy();
-        $list=$this->db->get('concierge',1);
-        $str.='<div class="concierge-list">';
+        $list=$this->db->get('custom',1);
+        $str.='<div class="custom-list">';
             foreach($list as $item){
-                $str.=$this->concierge_item($item);
+                $str.=$this->custom_item($item);
             }
         $str.='</div>';
         
@@ -62,8 +62,8 @@ class concierge extends base{
         $this->paging_shown = ($pg->paginationTotalpages > 0);
         return $str;
     }
-    function concierge_one($id=1){
-        $item=$this->db->where('id',$id)->getOne('concierge');
+    function custom_one($id=1){
+        $item=$this->db->where('id',$id)->getOne('custom');
         $title=$item['title'];
         $content=$item['content'];
         return  

@@ -18,7 +18,7 @@ class partner extends base{
                             <span>Welcome to JJ KETSA
                             </span>
                             <p class="sub-sum">'
-                                .common::qtext($db,7).
+                                .common::qtext($db,$lang,7).
                             '</p>
                         </div>
                     </div>

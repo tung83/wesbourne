@@ -1,10 +1,10 @@
 <?php
 //http://bootsnipp.com/snippets/z4Wor
-class sell extends base{
-    function __construct($db){        
-        parent::__construct($db,4,'sell');
+class occupancy extends base{
+    function __construct($db,$lang){        
+        parent::__construct($db,5,'occupancy',$lang);
     }
-    function ind_sell($sum_text){ 
+    function ind_occupancy($sum_text){ 
         $str.='<div class="row">
                      <div class="col-xs-12 title-head pull-left">
                         '.$this->title.'                  
@@ -16,17 +16,17 @@ class sell extends base{
             </div>';           
         return $str;
     }
-    function hot_sell(){
+    function hot_occupancy(){
         $this->db->reset();
         $this->db->where('active',1)->where('home',1);
-        $list=$this->db->get('sell',null);
+        $list=$this->db->get('occupancy',null);
         $i=1;
         foreach($list as $item){
             if($i%4==1){
                 $str.='
                 <div class="row">';
             }
-            $str.=$this->sell_item($item);
+            $str.=$this->occupancy_item($item);
             if($i%4==0){
                 $str.='
                 </div>';
@@ -39,7 +39,7 @@ class sell extends base{
         }
         return $str;
     }
-    function sell_item($item, $key=1){
+    function occupancy_item($item, $key=1){
         $lnk=myWeb.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
         $img=$this->first_image($item['id']);
 $firstItem_class= $key==0? ' sell-1st ' : '';
@@ -56,7 +56,7 @@ $firstItem_class= $key==0? ' sell-1st ' : '';
             </div>';
         return $str;
     }
-    function sell_list_item($item,$type=1){
+    function occupancy_list_item($item,$type=1){
         $lnk=myWeb.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
         $img=$this->first_image($item['id']);
         if(trim($img)==='') $img='holder.js/400x300';else $img=webPath.$img;
@@ -85,7 +85,7 @@ $firstItem_class= $key==0? ' sell-1st ' : '';
         $pId=$this->check_pId();
         $this->db->where('active',1);
         $this->db_orderBy();
-        $list=$this->db->get('sell_cate',null,'id,title');
+        $list=$this->db->get('occupancy_cate',null,'id,title');
         $str='
         <div class="row sell-category">
         <div class="col-xs-12">';
@@ -105,7 +105,7 @@ $firstItem_class= $key==0? ' sell-1st ' : '';
         </div>';
         return $str;
     }
-    function sell_cate(){
+    function occupancy_cate(){
         $pId = $this->check_pId();
         $page=isset($_GET['page'])?intval($_GET['page']):1;
         $this->db->reset();
@@ -115,7 +115,7 @@ $firstItem_class= $key==0? ' sell-1st ' : '';
         }
         $this->db_orderBy();
         $this->db->pageLimit=24;
-        $list=$this->db->paginate('sell',$page);
+        $list=$this->db->paginate('occupancy',$page);
         $count=$this->db->totalCount;
         $str.='<div class="sell-list">'
                 . '<div class="row">';
@@ -124,7 +124,7 @@ $firstItem_class= $key==0? ' sell-1st ' : '';
 if($page > 1){
 $key = 1;
 }
-                $str.=$this->sell_item($item, $key);
+                $str.=$this->occupancy_item($item, $key);
             }
         }        
         $str.=      '</div>'
@@ -135,7 +135,7 @@ $key = 1;
         if($pId==0){
             $pg->set_url(array('def'=>myWeb.$this->view,'url'=>myWeb.$this->view.'/page[p]'));
         }else{
-            $cate=$this->db->where('id',$pId)->getOne('sell_cate','id,title');       
+            $cate=$this->db->where('id',$pId)->getOne('occupancy_cate','id,title');       
             $pg->defaultUrl = myWeb.$this->view.'/'.common::slug($cate['title']).'-p'.$cate['id'];
             $pg->paginationUrl = $pg->defaultUrl.'/page[p]';
         }
@@ -144,7 +144,7 @@ $key = 1;
         return $str;
     }
         
-    function sell_search($db){
+    function occupancy_search($db){
         
         $str.='<div class="container"> 
                   <div class="row">
@@ -152,7 +152,7 @@ $key = 1;
                 <span>'.$this->title.'
                 </span>
                 <p class="sub-sum"><span>'
-                    .common::qtext($db,6).
+                    .common::qtext($db,$lang,6).
                 '</span></p>
             </div> ';
         $page=isset($_GET['page'])?intval($_GET['page']):1;
@@ -186,7 +186,7 @@ $key = 1;
         }
         $this->db_orderBy();
         $this->db->pageLimit=200;
-        $list=$this->db->paginate('sell',$page);        
+        $list=$this->db->paginate('occupancy',$page);        
         $count=$this->db->totalCount;
        $str.='<div class="alert alert-success"><i class="icon fa fa-check"></i>
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -196,7 +196,7 @@ $key = 1;
                 . '<div class="row">';
         if($count>0){
             foreach($list as $key=>$item){
-                $str.=$this->sell_item($item,$key);
+                $str.=$this->occupancy_item($item,$key);
             }
         }        
         $str.=      '</div>'
@@ -213,18 +213,18 @@ $key = 1;
         $str.= '</div></div>';
         return $str;
     }
-    function sell_one($id){
+    function occupancy_one($id){
         $this->db->where('id',$id);
-        $item=$this->db->getOne('sell','id,price,price_reduce,title,content,pId,feature,manual,promotion,video');
+        $item=$this->db->getOne('occupancy','id,price,price_reduce,title,content,pId,feature,manual,promotion,video');
         $this->db->where('pId',$item['pId'])->where('id',$item['id'],'<>')->where('active',1)->orderBy('rand()');
-        $list=$this->db->get('sell');
+        $list=$this->db->get('occupancy');
         $lnk=domain.'/'.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
         $str.='
         <div class="row sell-detail clearfix">
             
             <div class="col-xs-12">
             <div class="col-md-5">
-                '.$this->sell_image_show($item['id']).'
+                '.$this->occupancy_image_show($item['id']).'
             </div>
                 <article class="sell-one">
                 <h1>'.$item['title'].'</h1>';
@@ -270,7 +270,7 @@ $key = 1;
             $str.='<div class="slick sell_list clearfix">';
 
             foreach($list as $item){                
-                $str.=$this->sell_item($item);                
+                $str.=$this->occupancy_item($item);                
             }  
             $str.='</div>';  
         }        
@@ -280,14 +280,14 @@ $key = 1;
         $this->db->reset();
         $this->db->where('active',1)->where('pId',$id);
         $this->db_orderBy();
-        $img=$this->db->getOne('sell_image','img');
+        $img=$this->db->getOne('occupancy_image','img');
         return $img['img'];
     }
-    function sell_image_show($id){
+    function occupancy_image_show($id){
         $this->db->reset();
         $this->db->where('active',1)->where('pId',$id);
         $this->db_orderBy();
-        $list=$this->db->get('sell_image');
+        $list=$this->db->get('occupancy_image');
         $temp=$tmp='';
         foreach($list as $item){
             $temp.='
@@ -343,7 +343,7 @@ $key = 1;
 //		imageCrossfade: true,
 //                 galleryActiveClass: "active", 
 //	});  
-    function sell_cate_left_list(){
+    function occupancy_cate_left_list(){
         $pId = $this->check_pId();
         $this->db->reset();
         $this->db->where('active',1);
@@ -367,7 +367,7 @@ $key = 1;
         return $str;
     }
     
-    function sell_cate_list(){
+    function occupancy_cate_list(){
         $this->db->reset();
         $this->db->where('active',1);
         $this->db_orderBy();
@@ -380,6 +380,47 @@ $key = 1;
         }
         $str.='</ul>';
         return $str;
+    }
+    
+    function occupancys(){
+        
+        $this->db->reset();
+        $this->db->where('active',1);
+        $this->db_orderBy();
+        $list=$this->db->get('occupancy');
+    $str.='<section class="ind-partner">
+            <div class="container">
+            <div class="row">
+            <div class="row">
+            <div class="col-xs-12">
+                <div class="title-head">
+                    <span>'.$this->title.'
+                    </span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        <div id="partner-slider">';
+        foreach($list as $item){
+            
+                    $lnk=myWeb.$this->lang.'/'.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
+        $img=$this->first_image($item['id']);
+            $str.='<div><a  class="thumb" href="'.$lnk.'"><img style="max-height: 170px;padding: 0 5px" src="'.webPath.$img.'" alt=""></a><p class="text-center">'.common::str_cut($item['title'],30).'</p></div>';
+        }
+        $str.='</div>
+        </div></div>
+        </div>
+    </section>';
+            $str.=' 
+    <script type="text/javascript">
+        $(function() {
+            $("#partner-slider").slick({
+                infinite: true,
+                speed: 300,
+                variableWidth: true
+            })
+        })
+    </script>';
+            return $str;
     }
 }
 ?>

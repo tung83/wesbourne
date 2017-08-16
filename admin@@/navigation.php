@@ -5,10 +5,9 @@ function ad_menu()
 	$topNav=array(
                     array(1,"Slider","slider","camera-retro"),
                     array(2,"Giới thiệu","about","credit-card"),
-                    array(3,'Build',"product","dropbox"),
+                    array(3,'Rebuild',"product","dropbox"),
+                    array(17,'Occupancy',"occupancy","dropbox"),
                     array(16,'Buy',"buy","dropbox"),
-                    array(17,'Sell',"sell","dropbox"),
-					/*array(3,"Quản lý phụ tùng","accessary","pencil"),	*/	
                     array(4,'Concierge','concierge','anchor'),   
                     array(6,'Đối tác','partner','briefcase'), 
                     //array(9,'Video','video','youtube'),
@@ -33,13 +32,13 @@ function ad_menu()
                     array(12,"Footer","id=4")  ,             
                     array(12,"Home - Build Sum","id=11"),                   
                     array(12,"Home - Buy Sum","id=12"),                          
-                    array(12,"Home - Sell Sum","id=14"),              
+                    array(12,"Home - occupancy Sum","id=14"),              
                     array(12,"Home - Concierge Sum","id=13"),                  
                     array(12,"Home - About Sum","id=15"),  
                   
                     array(12,"Summary đầu trang Build","id=6"),                   
                     array(12,"Summary đầu trang About","id=7"),                    
-                    array(12,"Summary đầu  trang Sell","id=8") ,                          
+                    array(12,"Summary đầu  trang occupancy","id=8") ,                          
                     array(12,"Summary đầu trang Buy","id=10"),               
                     array(12,"Summary đầu trang Concierge","id=9")            
             

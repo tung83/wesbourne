@@ -1,7 +1,7 @@
 <?php
 class about extends base{
-    function __construct($db){
-        parent::__construct($db,6,'about');
+    function __construct($db,$lang){
+        parent::__construct($db,2,'about',$lang);
     }
     function ind_about($sum_text){
         $str='
@@ -10,8 +10,9 @@ class about extends base{
                 <div class="row">   
                 <div class="row">    
                     <div class="col-xs-12">
-                        <div class="about-title-head">
-                            <span>Welcome to JJ Ketsa Property Agents
+                        <div class="title-head">
+                            <span>' 
+                                .$this->title.' 
                             </span>
                             <p class="sub-sum">'
                                 .$sum_text.
