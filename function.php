@@ -295,14 +295,12 @@ function contact($db){
     </section>';
     return $str;
 }
-function about($db){ 
+function about($db,$lang){ 
     $str.='
     <section id="page">';
     common::page('about');
-    $about=new about($db);
-    $str.=$about->top_content_sum(common::qtext($db,$lang,7));
-    $str.=$about->about_cate();
-    $str.=$about->bottom_content(); 
+    $about=new about($db,$lang);
+    $str.=$about->about_one(); 
     $str.='
     </section>';
     return $str;    
@@ -328,28 +326,14 @@ function partner($db){
     </section>';
     return $str;    
 }
-function custom($db){
+function custom($db, $lang){
+    $str.='
+    <section id="custom-page">'; 
     common::page('custom');
-    $custom=new custom($db);
-    $str.=$custom->top_content_sum(common::qtext($db,$lang,9));
-    if(isset($_GET['id'])){
-        $str.=$custom->custom_one(intval($_GET['id']));    
-    }else{
-        $str.=$custom->custom_cate();
-    }     
-    $str.=$custom->bottom_content(); 
-    return $str;
-}
-function buy($db){
-    common::page('buy');
-    $buy=new buy($db);
-    $str.=$buy->top_content_sum(common::qtext($db,$lang,10));
-    if(isset($_GET['id'])){
-        $str.=$buy->buy_one(intval($_GET['id']));    
-    }else{
-        $str.=$buy->buy_cate();
-    }     
-    $str.=$buy->bottom_content(); 
+    $custom=new custom($db,$lang);
+    $str.=$custom->slide();
+    $str.='
+    </section>';
     return $str;
 }
 function sell($db){

@@ -41,11 +41,11 @@
             case 'tim-kiem':
                 echo search_sell($db,$lang);
                 break;
-            case 'buy':
-                echo buy($db,$lang);
+            case 'custom':
+                echo custom($db,$lang);
                 break;
             case 'sell':
-                echo sell($db,$lang, $view);
+                echo custom($db,$lang, $view);
                 break;        
             case 'concierge':
                 echo concierge($db,$lang);
@@ -54,6 +54,7 @@
                 echo partner($db,$lang);
                 break;
             case 'about-us':
+            case 'gioi-thieu':
                 echo about($db,$lang);
                 break;
             case 'contact-us':

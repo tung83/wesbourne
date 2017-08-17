@@ -103,12 +103,12 @@ a {
     margin-top: 60px;
     margin-bottom: 10px;
     display: inline-block;
-    line-height: 80px;
+    line-height: 55px;
     color: #000;
     padding-bottom: 20px; }
     .title-head > span:after {
       content: "";
-      border-bottom: 2px solid #ebebeb;
+      border-bottom: 2px solid #3b3b3b;
       width: 100px;
       margin: auto;
       display: block;

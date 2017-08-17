@@ -3,6 +3,7 @@ class custom extends base{
     function __construct($db,$lang){
         parent::__construct($db,3,'custom',$lang);
     }
+    
     function ind_custom($sum_text){
         $str='
         <div class="ind-custom">  
@@ -73,6 +74,81 @@ class custom extends base{
                 </div>
                 <p>'.$content.'</p>
             </article>';                        
+    }
+    
+    function slide(){
+        $str.='<div class="container">
+                <div class="row">   
+                    <div class="col-xs-12">
+                        <div class="title-head">
+                            <span>' 
+                                .$this->title.' 
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                </div>';
+        $str.=$this->wow_slider_custom($this->db);
+        return $str;
+    }
+    function wow_slider_custom($db){
+        $db->reset();
+        $list=$db->where('active',1)->orderBy('ind','ASC')->get('custom');
+        if(count($list) > 0){
+            $title0=$this->lang=='vi'?$list[0]['title']:($this->lang=='cn'?$list[0]['cn_title']:$list[0]['e_title']);
+        }
+        $hasTitle = count($list) > 0 && isset($title0) && $$title0 != "";
+    $notHasTitle = (!$hasTitle)? ' not-has-title' :'';
+        $str.='
+        <link rel="stylesheet" type="text/css" href="'.myWeb.'engine/style.css" />
+            <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+            <div id="wowslider-container1" class="'.$notHasTitle.'">
+            <div class="ws_images"><ul>';
+        $i=1;
+
+        foreach($list as $item){
+                    if($hasTitle){
+                        
+                            $title=$this->lang=='vi'?$item['title']:($this->lang=='cn'?$item['cn_title']:$item['e_title']);
+                            $sum=$this->lang=='vi'?$item['sum']:($this->lang=='cn'?$item['cn_sum']:$item['e_sum']);
+        
+                            $img='<img src="'.webPath.$item['img'].'" alt="" title="'.$title.'" />';
+                            $lnk=$item['lnk']!=''?$img.'<a href="'.$item['lnk'].'">'.$sum.'</a>':$img.$sum;
+                    }
+                    else{
+                            $img='<img src="'.webPath.$item['img'].'" alt="" title=""/>';
+                            $lnk=$item['lnk']!=''?$img.'<a href="'.$item['lnk'].'"></a>':$img;
+                    }
+            $str.='
+            <li>'.$lnk.'</li>';
+            $tmp.='
+            <a href="#" title=""><span>'.$i.'</span></a>';
+    if($hasTitle){
+            $tmp.='<br />';
+    }
+            $i++;
+        }
+        $str.='
+            </ul></div>';
+                    if($hasTitle){
+
+        $str.='
+            <div class="ws_bullets"><div>
+                    '.$tmp.'
+            </div></div>';
+    }else{
+     $str.='
+            <div class="ws_bullets"><div>
+                    '.$tmp.'
+            </div></div>';
+    }
+        $str.='
+            <div class="ws_shadow"></div>
+            </div>	
+            <script type="text/javascript" src="'.myWeb.'engine/wowslider.js"></script>
+            <script type="text/javascript" src="'.myWeb.'engine/script.js"></script>
+            <!-- End WOWSlider.com BODY section -->';
+        return $str;
     }
 }
 

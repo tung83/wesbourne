@@ -72,16 +72,23 @@ class about extends base{
         return $str;
     }
     function about_one($id=1){
-        $item=$this->db->where('id',$id)->getOne('about');
-        $title=$item['title'];
-        $content=$item['content'];
+        $item=$this->db->getOne('about');        
+        $content=$this->lang=='vi'?$item['content']:($this->lang=='cn'?$item['cn_content']:$item['e_content']);
         return  
-            '<article>
-                <div class="text-center">
-                    <h2 class="page-title">'.$title.'</h2>
+            '<div class="container">
+                <div class="row">   
+                        <div class="title-head">
+                            <span>' 
+                                .$this->title.' 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    
+                <div class="row">   '
+                       .$content.' 
                 </div>
-                <p>'.$content.'</p>
-            </article>';                        
+            </div>';                        
     }
 }
 
