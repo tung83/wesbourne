@@ -27,7 +27,7 @@ define('_hostName'  , 'localhost');
 //define('_dbName'    , 'hana2');	
 //define('_pass'      , 'tung');
 define('_userName'  , 'tung');	
-define('_dbName'    , 'jjketsap_db');	
+define('_dbName'    , 'wesbourne');    	
 define('_pass'      , 'tung');
 
 

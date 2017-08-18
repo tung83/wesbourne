@@ -53,15 +53,11 @@ function menu($db,$lang,$view){
                                 <ul class="mobile-sub wsmenu-list">';
     
                             foreach($list as $item){
-                                $active=($view==$item['view'])?'active':'';
-                    if(($view == 'trang-chu' && $item['view'] =='home') || ($view == 'search' && $item['view'] =='build') ||($view == 'search_sell' && $item['view'] =='sell'))
-                        {
-                                $active='active';
-                        }
                         
         $title=$lang=='vi'?$item['title']:($lang=='cn'?$item['cn_title']:$item['e_title']);
         $db_view=$lang=='vi'?$item['view']:($lang=='cn'?$item['cn_view']:$item['e_view']);
-                                
+                                $active=($view==$db_view)?'active':'';  
+                    
                                 $lnk=myWeb.$lang.'/'.$db_view;  
                                 $str.='
                                     <li><a href="'.$lnk.'"  class="'.$active.'">'.$title.'</a></li>';
@@ -283,11 +279,11 @@ function slide($db){
 	<!-- End WOWSlider.com BODY section -->';
     return $str;
 }
-function contact($db){
+function contact($db,$lang){
     $str.='
     <section id="page">';
     common::page('contact');
-    $contact=new contact($db);
+    $contact=new contact($db,$lang);
     $str.=$contact->contact(); 
     $str.=$contact->bottom_content();    
     $str.=gmap();
@@ -304,6 +300,36 @@ function about($db,$lang){
     $str.='
     </section>';
     return $str;    
+}
+function custom($db, $lang){
+    $str.='
+    <section id="custom-page">'; 
+    common::page('custom');
+    $custom=new custom($db,$lang);
+    $str.=$custom->slide();
+    $str.='
+    </section>';
+    return $str;
+}
+function block($db, $lang){
+    $str.='
+    <section id="block-page">'; 
+    common::page('block');
+    $block=new block($db,$lang);
+    $str.=$block->block_cate();
+    $str.='
+    </section>';
+    return $str;
+}
+function development($db, $lang){
+    $str.='
+    <section id="development-page">'; 
+    common::page('development');
+    $development=new development($db,$lang);
+    $str.=$development->development_cate();
+    $str.='
+    </section>';
+    return $str;
 }
 function partner($db){ 
     $str.='
@@ -326,37 +352,25 @@ function partner($db){
     </section>';
     return $str;    
 }
-function custom($db, $lang){
-    $str.='
-    <section id="custom-page">'; 
-    common::page('custom');
-    $custom=new custom($db,$lang);
-    $str.=$custom->slide();
-    $str.='
-    </section>';
-    return $str;
-}
-function sell($db){
+function occupancy($db,$lang){
     $str.='
     <section id="sell-page">'; 
-    common::page('sell');
-    $sell=new sell($db);
-    $str.=search_form($db);
-    $str.=$sell->top_content_sum(common::qtext($db,$lang,8));
+    common::page('occupancy');
+    $occupancy=new occupancy($db,$lang);
+    $str.=$occupancy->top_content_sum(common::qtext($db,$lang,8));
     if(isset($_GET['id'])){
-        $str.=$sell->sell_one(intval($_GET['id']));    
+        $str.=$occupancy->occupancy_one(intval($_GET['id']));    
     }else{
-        $str.=$sell->sell_cate();
+        $str.=$occupancy->occupancy_cate();
     }     
-    $str.=$sell->bottom_content(); 
+    $str.=$occupancy->bottom_content(); 
     return $str;
 }
-function product($db){
+function product($db,$lang){
     $str.='
     <section id="product-page">';  
-    $str.=search_form($db);
     common::page('product');
-    $pd=new product($db);
+    $pd=new product($db,$lang);
     
     $str.=$pd->top_content_sum(common::qtext($db,$lang,6));
     if(isset($_GET['id'])){

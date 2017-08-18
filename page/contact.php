@@ -1,8 +1,8 @@
 <?php
 class contact extends base{
     private $post_result;
-    function __construct($db){
-        parent::__construct($db,8,'contact');
+    function __construct($db,$lang){
+        parent::__construct($db,8,'contact',$lang);
     }
     function contact_insert(){
         $this->db->reset();
@@ -65,10 +65,7 @@ class contact extends base{
                             <div class="title-head">
                                 <span>'
                                     .$this->title.' 
-                                </span>                                
-                                <p>
-                                    <i>Thank you for visiting our website. For more information, Please contact:</i>
-                                </p>   
+                                </span>  
                             </div>
                         </div> 
                     </div> 
@@ -77,20 +74,21 @@ class contact extends base{
                          {
                              $str.= $this->post_result;
                          }                             
-        $str.=              '<div class="col-md-4 contact-left">
-                             
-                            <p class="thanks-text">
-                                '.common::qtext($this->db,3).'
-                            </p>     
-                            <p>
-                                <img src="'.frontPath.'contact.jpg" class="img-responsive map-image" alt="" title=""/>
-                            </p>     
-                        </div>
-                        <div class="col-md-7 col-md-offset-1 "> 
-                            <h3 class="contact-right-header">
-                                How can we assist you?
-                            </h3>
+        $str.=              '
                             <form data-toggle="validator" role="form" class="contact-form" name="contact-form" method="post" action="">
+                            <div class="col-md-7">
+
+                            <p class="contact-address">
+                                '.common::qtext($this->db,$this->lang, 4).'
+                            </p>  
+                            <div class="clearfix"></div>
+                            <p class="contact-enquiry-text">
+                                '.common::qtext($this->db,$this->lang, 3).'
+                            </p> 
+                            <div class="clearfix"></div>
+                            <h3 class="contact-right-header">
+                                Leasing Entquiry
+                            </h3>
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" required placeholder="Name *" />
                                     <div class="help-block with-errors"></div>
@@ -109,42 +107,7 @@ class contact extends base{
                                     <input type="email" name="email" class="form-control" required placeholder="Email *" />
                                     <div class="help-block with-errors"></div>
                                 </div> 
-                                <div class="form-group">
-                                <table class="purpose-check">
-                                    <tr>
-                                    <td>
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox" name="purpose[]" value="custom homes" class=""/>Custom Homes
-                                        </label>
-                                    </td>
-                                    <td>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="purpose[]" value="buy home" class=""/>Buy Home (advocacy)
-                                    </label>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="purpose[]" value="build new home" class=""/>Build New Home
-                                    </label>
-                                    </td>
-                                    <td>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="purpose[]" value="house" class=""/>Would you like to become an Active Referral Partner?
-                                    </label>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="purpose[]" value="sell home" class=""/>Sell Home
-                                    </label>
-                                    </td>
-                                    </tr>
-                                   </table>
-                                    <div class="help-block with-errors"></div>
-                                </div>   
+                               
                                 <div class="form-group">
                                     <textarea name="content" id="content" required class="form-control"  placeholder="Message *" rows="8"></textarea>
                                     <div class="help-block with-errors"></div>
@@ -153,12 +116,88 @@ class contact extends base{
                                     <button type="submit" name="contact_send" class="btn btn-primary btn-md btn-custom submit-button">
                                         SEND
                                     </button>
-                                    <button type="reset" name="reset" class="btn btn-primary btn-md btn-custom">
+                                    <button type="reset" name="reset" class="clear-btn btn btn-primary btn-md btn-custom">
                                         CLEAR
                                     </button>
                                 </div>
-                            </form> 
                         </div>
+                        <div class="col-md-4  col-md-offset-1"> 
+                             <div class="form-group">
+                                    <label class="inline">How can we assist you?
+                                    </label>
+                                <table class="purpose-check">
+                                    <tr>
+                                    <td>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="purpose[]" value="custom homes" class=""/>Custom Design
+                                        </label>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="purpose[]" value="buy home" class=""/>New Home
+                                    </label>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="purpose[]" value="build new home" class=""/>Knockdown
+                                    </label>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="purpose[]" value="house" class=""/>Multi Unit/Subdivision
+                                    </label>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="purpose[]" value="sell home" class=""/>Renovation
+                                    </label>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="purpose[]" value="sell home" class=""/>Town Planning
+                                    </label>
+                                    </td>
+                                    </tr>
+                                   </table>
+                                    <div class="help-block with-errors"></div>
+                                </div>   
+                                
+                                    <div class="form-group">
+                                    <label class="inline">Do i need help finding a block?
+                                    </label>
+                                <table class="purpose-check">
+                                    <tr>
+                                    <td>
+                                        <label class="">
+                                            <input type="radio" name="need_help" id="radios-1" value="Yes">
+                                            Yes
+                                        <input type="text" name="where" class="contact-where form-control" placeholder="If yes, where?"/>
+                                        </label>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <label class="">
+                                            <input type="radio" name="need_help" id="radios-2" value="No">
+                                            No
+                                    </label>
+                                    </td>
+                                    </tr>
+                                   </table>
+                                    <div class="help-block with-errors"></div>
+                                </div>   
+                        </div>
+                        </form> 
                     </div><!--/.row-->   
                 </div><!--/.row contact-box--> 
             </div><!--/.container-->

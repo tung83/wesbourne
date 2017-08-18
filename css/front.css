@@ -84,15 +84,15 @@ a {
     display: inline; }
     #social_block li a {
       display: inline-block;
-      width: 40px;
-      height: 40px;
-      padding: 7px 11px;
+      width: 32px;
+      height: 32px;
+    padding: 5px 8px;
       border: 1px solid #fff;
       border-radius: 50%; }
       #social_block li a i {
         color: #fff; }
       #social_block li a.facebook-link {
-        padding-left: 14px; }
+        padding-left: 11px; }
 
 .title-head {
   text-align: center;
@@ -120,8 +120,8 @@ a {
       display: inline-block; }
 
 .pagination > .active > a, .pagination > .active span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-  background-color: #ea639e;
-  border-color: #ea639e; }
+  background-color: #bf9f01;
+  border-color: #bf9f01; }
 
 /* 
 	Header 
@@ -171,6 +171,7 @@ a {
       color: #fff !important; }
     .header .menu-ground .wsmenu > .wsmenu-list > li > a {
       color: #fff;
+      display: inline;
       text-transform: uppercase;
       border-radius: 0px;
       font-weight: bold;
@@ -191,7 +192,7 @@ a {
 @media (min-width: 992px) {
   .wsmenu > .wsmenu-list > li > a {
     font-size: 13px; 
-    padding: 0 10px;
+    padding: 5px 0px;
     line-height: 24px; } }
 /* 
 	Footer
@@ -244,7 +245,7 @@ footer {
       display: block;
       overflow: hidden;
       float: right;
-      font-size: 20px;
+      font-size: 16px;
       margin-bottom: 10px; }
 
 @media (min-width: 992px) {
@@ -644,16 +645,21 @@ bottom: 0!important;
       border-color: #6c5417;
       border-radius: 0; }
     .contact-wrap .contact-form .btn-primary {
-      background-color: #ca256a;
-      border-color: #b20f53;
+      background-color: #c7a009;
+      padding: 6px 30px;
+      border-color: #c7a009;
       border-radius: 0; }
     .contact-wrap .contact-form .btn-primary.disabled {
-      background-color: #d3407d;
-      border-color: #ca256a;
+      background-color: #ccbd82;
+      border-color: #ccbd82;
       border-radius: 0; }
     .contact-wrap .contact-form .purpose-check tr td:first-child {
       padding-right: 25px; }
-
+    .clear-btn{
+      background-color: #000!important;
+      border-color: #000!important;
+        
+    }
 @media (min-width: 1060px) {
   .contact-wrap {
     padding-left: 85px;
@@ -819,4 +825,23 @@ textarea
   }
   .logo{
       margin-top: 10px;
+  }
+  .development-img,.block-img{
+      position: relative;
+      margin: 18px 0;
+  }
+  .development-content,.block-content{
+          position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 230px;
+    height: 32px;
+    background-color: #eaebec;
+  }
+  .development-content div,.block-content div{      
+    padding-top: 5px;
+  }
+  .contact-where{
+      display: inline;
+      width: auto;
   }

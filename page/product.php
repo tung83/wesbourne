@@ -2,7 +2,7 @@
 //http://bootsnipp.com/snippets/z4Wor
 class product extends base{
     function __construct($db,$lang){        
-        parent::__construct($db,2,'product',$lang);
+        parent::__construct($db,4,'product',$lang);
     }
     function ind_product($db){ 
         $str.='
@@ -15,7 +15,7 @@ class product extends base{
                     <span>'.$this->title.'
                     </span>
                     <p class="sub-sum"><span>'
-                        .common::qtext($db,$lang,11).
+                        .common::qtext($db,$this->lang,11).
                     '</span></p>
                 </div>
             </div>
@@ -70,7 +70,7 @@ class product extends base{
         return $str;
     }
     function product_item($item){
-        $lnk=myWeb.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
+        $lnk=myWeb.$this->lang.'/'.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
         $img=$this->first_image($item['id']);
         $str.='
             <div class="col-md-4 wow fadeIn animated product-col" data-wow-duration="1000ms">
@@ -86,7 +86,7 @@ class product extends base{
         return $str;
     }
     function product_list_item($item,$type=1){
-        $lnk=myWeb.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
+        $lnk=myWeb.$this->lang.'/'.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
         $img=$this->first_image($item['id']);
         if(trim($img)==='') $img='holder.js/400x300';else $img=webPath.$img;
         if($type==1){
@@ -157,10 +157,10 @@ class product extends base{
         
         $pg=new Pagination(array('limit'=>24,'count'=>$count,'page'=>$page,'type'=>0));  
         if($pId==0){
-            $pg->set_url(array('def'=>myWeb.$this->view,'url'=>myWeb.$this->view.'/page[p]'));
+            $pg->set_url(array('def'=>myWeb.$this->lang.'/'.$this->view,'url'=>myWeb.$this->lang.'/'.$this->view.'/page[p]'));
         }else{
             $cate=$this->db->where('id',$pId)->getOne('product_cate','id,title');       
-            $pg->defaultUrl = myWeb.$this->view.'/'.common::slug($cate['title']).'-p'.$cate['id'];
+            $pg->defaultUrl = myWeb.$this->lang.'/'.$this->view.'/'.common::slug($cate['title']).'-p'.$cate['id'];
             $pg->paginationUrl = $pg->defaultUrl.'/page[p]';
         }
         $str.= '<div class="pagination-wrapper"> <div class="text-center">'.$pg->process().'</div></div>';
@@ -175,7 +175,7 @@ class product extends base{
                     <span>'.$this->title.'
                     </span>
                     <p class="sub-sum"><span>'
-                        .common::qtext($db,$lang,6).
+                        .common::qtext($db,$this->lang,6).
                     '</span></p>
                 </div>';
         $page=isset($_GET['page'])?intval($_GET['page']):1;

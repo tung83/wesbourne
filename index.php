@@ -30,7 +30,7 @@
         <?php
 
         switch($view){
-            case 'build':
+            case 'knockdown-rebuild':
                 echo product($db,$lang);
                 break;
             case 'search':
@@ -44,11 +44,14 @@
             case 'custom':
                 echo custom($db,$lang);
                 break;
-            case 'sell':
-                echo custom($db,$lang, $view);
+            case 'dual-occupancy':
+                echo occupancy($db,$lang);
                 break;        
-            case 'concierge':
-                echo concierge($db,$lang);
+            case 'sloping-blocks':
+                echo block($db,$lang);
+                break;       
+            case 'development':
+                echo development($db,$lang);
                 break;
             case 'meet-our-partners':
                 echo partner($db,$lang);
@@ -57,7 +60,7 @@
             case 'gioi-thieu':
                 echo about($db,$lang);
                 break;
-            case 'contact-us':
+            case 'contact':
                 echo contact($db,$lang);
                 break;
             default:
