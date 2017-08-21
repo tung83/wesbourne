@@ -42,7 +42,7 @@ define('frontPath'   ,'/file/front/');
 define('phpLib'     ,root.'/object/');
 define('pageLib'    ,root.'/page/');
 define('widgetLib'  ,root.'/widget/');
-define('head_title'    ,'JJKetsa');
+define('head_title'    ,'Wesbourne');
 
 
 //define area end

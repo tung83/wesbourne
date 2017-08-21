@@ -40,12 +40,12 @@ class block extends base{
         return $str;
     }
     function block_item($item){      
-        $content=$this->lang=='vi'?$item['content']:($this->lang=='cn'?$item['cn_content']:$item['e_content']);
+        $title=$this->lang=='vi'?$item['title']:($this->lang=='cn'?$item['cn_title']:$item['e_title']);
         $str.= '
-            <div class="row wow fadeIn animated" data-wow-duration="1000ms">
-                <div class="col-xs-12">
+            <div class="wow fadeIn animated" data-wow-duration="1000ms">
+                <div class="block-item col-xs-12">
                         <img src="'.webPath.$item['img'].'" class="img-responsive block-img" alt="" title="">                            
-                            <div class="block-content"><div class="text-center">'.$content.'</div></div>
+                            <div class="block-content"><div class="text-center">'.$title.'</div></div>
                         </img>
                  </div>
             </div>';

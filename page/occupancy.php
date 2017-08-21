@@ -42,7 +42,7 @@ class occupancy extends base{
     function occupancy_item($item, $key=1){
         $lnk=myWeb.$this->lang.'/'.$this->view.'/'.common::slug($item['title']).'-i'.$item['id'];
         $img=$this->first_image($item['id']);
-$firstItem_class= $key==0? ' sell-1st ' : '';
+$firstItem_class= '';
         $str.='
             <div class="col-md-4 wow fadeIn animated sell-col'.$firstItem_class.'" data-wow-duration="1000ms">
                 <div class="sell-item item">
@@ -232,8 +232,6 @@ $key = 1;
                 $str.='
                 <p>'.$item['feature'].'</p>
                 </article>
-               <!-- Button trigger modal -->
-  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
 
                 <div class="detailed">       
                     <h4><i class="fa fa-file-text-o"></i> DETAILS</h4>

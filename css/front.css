@@ -372,7 +372,7 @@ footer {
     padding: 20px 0; }
   .ind-sell-buy .ind-buy {
     background-color: #1e1e1e;
-    padding: 90px 60px 50px 0px; }
+    padding: 0px; }
     .ind-sell-buy .ind-buy .title-head {
       margin-bottom: 30px;
       font-size: 53px;
@@ -669,7 +669,7 @@ bottom: 0!important;
         ------------------------------------------------
 */
 #wowslider-container1 .ws_bullets {
-  bottom: 50% !important;
+  bottom: 35% !important;
   left: auto !important; }
   #wowslider-container1 .ws_bullets a {
     background: #fff !important;
@@ -684,7 +684,7 @@ bottom: 0!important;
   -o-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
   color: #fff !important;
-  opacity: 0.9 !important;
+  opacity: 0.5 !important;
   background-color: #000 !important;
   bottom: 30% !important;
   left: auto !important;
@@ -828,7 +828,6 @@ textarea
   }
   .development-img,.block-img{
       position: relative;
-      margin: 18px 0;
   }
   .development-content,.block-content{
           position: absolute;
@@ -845,3 +844,28 @@ textarea
       display: inline;
       width: auto;
   }
+  #wowslider-container1 .ws_bullets div {
+    left: 5%!important;
+}
+.block-item{
+    padding: 0px!important;
+      margin: 18px 0;
+}
+.combine-item{
+    position: relative;
+    padding: 0;
+}
+.combine-content{
+    position: absolute;
+    left: 50px;
+    bottom: 50%;
+    color: #c69f05;
+    text-transform: uppercase;
+    height: 32px;
+}
+.combine-content div a{
+    color: #c69f05;
+}
+.combine-img{
+    width: 100%;
+}

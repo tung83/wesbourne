@@ -18,10 +18,11 @@ function qtext($db)
 	if(isset($_POST["addNew"])||isset($_POST["update"])) {
         $content=str_replace("'","",$_POST['content']);
         $e_content=str_replace("'","",$_POST['e_content']);
+        $cn_content=str_replace("'","",$_POST['cn_content']);
 	}
 	if(isset($_POST["update"]))	{
         $update=array(
-            'content'=>$content,'e_content'=>$e_content
+            'content'=>$content,'e_content'=>$e_content,'cn_content'=>$cn_content
         );       
         try{
             $db->where('id',$id);
@@ -42,8 +43,22 @@ function qtext($db)
 		<form role="form" id="actionForm" name="actionForm" enctype="multipart/form-data" action="" method="post" data-toggle="validator">
 		<div class="row">
 		<div class="col-lg-12"><h3>Cập nhật - Thêm mới thông tin</h3></div>
-        <div class="col-lg-12">
-            '.$form->ckeditor('content',array('label'=>'Nội dung')).'
+        <div class="col-lg-12 admin-tabs">
+            <ul class="nav nav-tabs">
+    			<li class="active"><a href="#vietnamese" data-toggle="tab">Việt Nam</a></li>
+    			<li><a href="#english" data-toggle="tab">English</a></li>
+    			<li><a href="#chinese" data-toggle="tab">Chinese</a></li>
+    		</ul>
+    		<div class="tab-content">
+    			<div class="tab-pane bg-vi active" id="vietnamese">
+                            '.$form->ckeditor('content',array('label'=>'Nội dung')).' 
+    			</div>
+    			<div class="tab-pane bg-en" id="english">
+                            '.$form->ckeditor('e_content',array('label'=>'Nội dung')).'  
+    			</div><div class="tab-pane bg-cn" id="chinese">
+                            '.$form->ckeditor('cn_content',array('label'=>'Nội dung')).' 
+    			</div>
+    		</div>             
         </div>
 		'.$form->hidden($btn['name'],$btn['value']).'
 	</div>

@@ -5,11 +5,11 @@ function ad_menu()
 	$topNav=array(
                     array(1,"Slider","slider","camera-retro"),
                     array(2,"Giới thiệu","about","credit-card"),
-                    array(3,'Rebuild',"product","dropbox"),
-                    array(17,'Occupancy',"occupancy","dropbox"),
-                    array(16,'Buy',"buy","dropbox"),
-                    array(4,'Concierge','concierge','anchor'),   
-                    array(6,'Đối tác','partner','briefcase'), 
+                    array(1,"Custom","custom","youtube"),
+                    array(3,'Knockdown Rebuild',"product","dropbox"),
+                    array(17,'Dual Occupancy',"occupancy","shopping-cart"),
+                    array(16,'Slopping Blocks',"block","dropbox"),
+                    array(4,'Development','development','anchor'),   
                     //array(9,'Video','video','youtube'),
                     /*array(14,'Hỗ trợ trực tuyến','support_online','headphones'),*/
                     //array(14,'Đặt hàng','cart','shopping-cart'),
@@ -28,19 +28,16 @@ function ad_menu()
                     //array(8,'Danh mục khuyến mãi','type=promotion_cate'),
                     //array(8,'Danh sách khuyến mãi','type=promotion'),   
                     array(12,"HotLine","id=2"),
-                    array(12,"Liên hệ","id=3"),                   
-                    array(12,"Footer","id=4")  ,             
-                    array(12,"Home - Build Sum","id=11"),                   
-                    array(12,"Home - Buy Sum","id=12"),                          
-                    array(12,"Home - occupancy Sum","id=14"),              
-                    array(12,"Home - Concierge Sum","id=13"),                  
-                    array(12,"Home - About Sum","id=15"),  
+                    array(12,"Nội dung trái trang Liên hệ","id=3"),                   
+                    array(12,"Địa chỉ ở Footer","id=4")  ,                            
+                    array(12,"Home - Dual Occupancy/Knockdown rebuild","id=12"),           
+                    array(12,"Home - Custom","id=13"),                  
+                    array(12,"Home - About","id=15"),  
                   
-                    array(12,"Summary đầu trang Build","id=6"),                   
-                    array(12,"Summary đầu trang About","id=7"),                    
-                    array(12,"Summary đầu  trang occupancy","id=8") ,                          
-                    array(12,"Summary đầu trang Buy","id=10"),               
-                    array(12,"Summary đầu trang Concierge","id=9")            
+                    array(12,"Summary đầu trang Knockdown Rebuild","id=6"),                 
+                    array(12,"Summary đầu  trang Dual occupancy","id=8") ,                          
+                    array(12,"Summary đầu trang Slopping blocks","id=10"),               
+                    array(12,"Summary đầu trang Development","id=9")            
             
 				);
 	$size=sizeof($topNav);

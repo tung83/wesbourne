@@ -1,11 +1,11 @@
 <?php
 function mainProcess($db){
-	return slider($db);	
+	return custom($db);	
 }
-function slider($db){
+function custom($db){
 	$msg='';
-    $act='slider';
-    $table='slider';
+    $act='custom';
+    $table='custom';
     if(isset($_POST["Edit"])&&$_POST["Edit"]==1){
 		$db->where('id',$_POST['idLoad']);
         $item = $db->getOne($table);
@@ -54,7 +54,7 @@ function slider($db){
 		try{
             $recent = $db->insert($table,$insert);
             if(common::file_check($_FILES['file'])){
-                WideImage::load('file')->resize(1900,700,'fill')->saveToFile(myPath.$file);
+                WideImage::load('file')->resize(1348,550 ,'fill')->saveToFile(myPath.$file);
                 $db->where('id',$recent);
                 $db->update($table,array('img'=>$file));
             }
@@ -71,7 +71,7 @@ function slider($db){
             'cn_title'=>$cn_title,'cn_sum'=>$cn_sum
                 );
         if(common::file_check($_FILES['file'])){
-            WideImage::load('file')->resize(1900,700, 'fill')->saveToFile(myPath.$file);
+            WideImage::load('file')->resize(1348,550 , 'fill')->saveToFile(myPath.$file);
             $update = array_merge($update,array('img'=>$file)); 
             $form->img_remove($_POST['idLoad'],$db,$table);
         }        
@@ -152,7 +152,7 @@ function slider($db){
         </div>               
         </div>
         <div class="col-lg-12">
-            '.$form->file('img',1900,700).'
+            '.$form->file('img',1348,550 ).'
             '.$form->number('ind',array('label'=>'Thứ tự')).'
             '.$form->checkbox('active',array('label'=>'Hiển thị','checked'=>true)).'
         </div>

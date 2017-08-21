@@ -97,7 +97,7 @@ class custom extends base{
         if(count($list) > 0){
             $title0=$this->lang=='vi'?$list[0]['title']:($this->lang=='cn'?$list[0]['cn_title']:$list[0]['e_title']);
         }
-        $hasTitle = count($list) > 0 && isset($title0) && $$title0 != "";
+        $hasTitle = count($list) > 0 && isset($title0) && $title0 != "";
     $notHasTitle = (!$hasTitle)? ' not-has-title' :'';
         $str.='
         <link rel="stylesheet" type="text/css" href="'.myWeb.'engine/style.css" />

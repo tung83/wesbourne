@@ -398,7 +398,7 @@ function occupancy($db){
 	$str=$form->breadcumb($page_head);
 	$str.=$form->message($msg);
     
-    $str.=$form->search_area($db,$act,'occupancy_cate',$_GET['hint'],1);
+    $str.=$form->search_area($db,$act,'occupancy',$_GET['hint'],0);
 
     $head_title=array('Tên SP<code>Vi/En/Cn</code>','Hình ảnh','Trang chủ','Hiển thị','Thứ tự');
 	$str.=$form->table_start($head_title);
@@ -415,8 +415,6 @@ function occupancy($db){
     if($db->count!=0){
         $db_sub=$db;
         foreach($list as $item){
-            $cate_1=$db->where('id',$item['pId'])->where('lev',1)->getOne('occupancy_cate','id,title,pId');
-            //$cate_1=$db->where('id',$cate_2['pId'])->where('lev',1)->getOne('occupancy_cate','id,title');
             $img=$db->where('pId',$item['id'])->orderBy('ind','asc')->getOne('occupancy_image','img');
             if(trim($img['img'])==='') $img='holder.js/130x100';else $img=myPath.$img['img'];   
             $item_content = array(

@@ -398,7 +398,7 @@ function product($db){
 	$str=$form->breadcumb($page_head);
 	$str.=$form->message($msg);
     
-    $str.=$form->search_area($db,$act,'product_cate',$_GET['hint'],1);
+    $str.=$form->search_area($db,$act,'product',$_GET['hint'],0);
 
     $head_title=array('Tên SP<code>Vi/En/Cn</code>','Hình ảnh','Trang chủ','Hiển thị','Thứ tự');
 	$str.=$form->table_start($head_title);
